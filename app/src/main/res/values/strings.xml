@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Click-Away</string>
+    <string name="hospitals">Hospitals</string>
+    <string name="help">HELP!</string>
+    <string name="drug_store">Drug Store</string>
+    <string name="sos">SOS</string>
+    <string name="blood_bank">Blood Bank</string>
+</resources>

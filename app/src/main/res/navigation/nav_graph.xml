@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/mainActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="msahil432.click_away.MainActivity"
+        android:label="main_activity"
+        tools:layout="@layout/main_activity" />
+    <activity
+        android:id="@+id/bloodBankActivity"
+        android:name="msahil432.click_away.BloodBankActivity"
+        android:label="blood_bank_activity"
+        tools:layout="@layout/blood_bank_activity" />
+    <activity
+        android:id="@+id/chemistActivity"
+        android:name="msahil432.click_away.ChemistActivity"
+        android:label="chemist_activity"
+        tools:layout="@layout/chemist_activity" />
+    <activity
+        android:id="@+id/hospitalsActivity"
+        android:name="msahil432.click_away.HospitalsActivity"
+        android:label="hospitals_activity"
+        tools:layout="@layout/hospitals_activity" />
+    <activity
+        android:id="@+id/introActivity"
+        android:name="msahil432.click_away.IntroActivity"
+        android:label="IntroActivity" />
+    <fragment
+        android:id="@+id/introductionFragment"
+        android:name="msahil432.click_away.IntroductionFragment"
+        android:label="fragment_introduction"
+        tools:layout="@layout/fragment_introduction" >
+        <action
+            android:id="@+id/action_introductionFragment_to_personalDetailsFragment"
+            app:destination="@id/personalDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personalDetailsFragment"
+        android:name="msahil432.click_away.PersonalDetailsFragment"
+        android:label="intro_fragment_personal_details"
+        tools:layout="@layout/intro_fragment_personal_details" >
+        <action
+            android:id="@+id/action_personalDetailsFragment_to_introFragmentDetails"
+            app:destination="@id/introFragmentDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/introFragmentDetails"
+        android:name="msahil432.click_away.IntroFragmentDetails"
+        android:label="intro_fragment_details"
+        tools:layout="@layout/intro_fragment_details" />
+</navigation>

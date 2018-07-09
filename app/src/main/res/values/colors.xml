@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white">#FFFFFF</color>
+    <color name="red">#d50000</color>
+    <color name="text_color">#FFFF</color>
+    <color name="sos_color">#e040fb</color>
+    <color name="blood_bank_color">#7986cb</color>
+    <color name="drug_store">#00e676</color>
+    <color name="hospital_color">#c0ca33</color>
+</resources>
