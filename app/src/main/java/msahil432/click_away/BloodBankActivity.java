@@ -5,11 +5,9 @@ import android.os.Bundle;
 import android.webkit.WebView;
 import android.widget.ListView;
 
-import msahil432.click_away.Extras.mExceptionHandler;
+import msahil432.click_away.extras.MyExceptionHandler;
 import msahil432.click_away.connections.myGPSProvider;
 import msahil432.click_away.connections.myHTTP;
-
-import msahil432.click_away.R;
 
 public class BloodBankActivity extends AppCompatActivity {
 
@@ -21,7 +19,7 @@ public class BloodBankActivity extends AppCompatActivity {
     ListView listView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Thread.setDefaultUncaughtExceptionHandler(new mExceptionHandler(this));
+        Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.blood_bank_activity);
         setTitle("Blood banks");

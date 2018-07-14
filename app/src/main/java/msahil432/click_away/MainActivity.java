@@ -20,7 +20,7 @@ import org.json.JSONObject;
 
 import java.util.Set;
 
-import msahil432.click_away.Extras.mExceptionHandler;
+import msahil432.click_away.extras.MyExceptionHandler;
 import msahil432.click_away.connections.myGPSProvider;
 import msahil432.click_away.connections.myHTTP;
 
@@ -34,10 +34,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Thread.setDefaultUncaughtExceptionHandler(new mExceptionHandler(this));
+        Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main_activity);
     }
+
+
 
     class as extends AsyncTask<String, Void, String> {
         @Override

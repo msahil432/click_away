@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Extras.ForceCloseActivity" />
+        <activity android:name=".extras.ForceCloseActivity" />
         <activity android:name=".ChemistActivity" />
         <activity android:name=".HospitalsActivity" />
         <activity android:name=".BloodBankActivity" />
