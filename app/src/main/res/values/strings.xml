@@ -5,4 +5,13 @@
     <string name="drug_store">Drug Store</string>
     <string name="sos">SOS</string>
     <string name="blood_bank">Blood Bank</string>
+    <string name="welcome">Welcome to Click-Away</string>
+    <string name="tagline">Now, Your safekeepers are just a "Click-Away"</string>
+    <string name="warning">Warning : This is a Demo App</string>
+    <string name="read_priavcy_policy_here">Tap here to read Privacy Policy</string>
+    <string name="permissions_reason">
+        Following Permissions are needed for mentioned reasons: \n
+
+    </string>
+    <string name="privacy_policy">https://docs.google.com/document/d/1etloEvZLytV1Xkjugk_4njgn7s8e_aXlXTF32HWn1Wo/</string>
 </resources>

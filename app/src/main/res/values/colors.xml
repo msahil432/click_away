@@ -10,4 +10,5 @@
     <color name="blood_bank_color">#7986cb</color>
     <color name="drug_store">#00e676</color>
     <color name="hospital_color">#c0ca33</color>
+    <color name="text_black">#484646</color>
 </resources>

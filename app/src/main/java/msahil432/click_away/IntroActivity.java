@@ -23,6 +23,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,34 +39,30 @@ import java.util.Set;
 
 import msahil432.click_away.connections.myGPSProvider;
 import msahil432.click_away.connections.myHTTP;
-import msahil432.click_away.R;
 
 import static android.content.ContentValues.TAG;
 
 
 /**
- *
+ *  Created by msahil432
  */
 
 public class IntroActivity extends AppIntro implements
         IntroFragmentDetails.OnFragmentInteractionListener,
-        PersonalDetailsFragment.OnFragmentInteractionListener,
-        IntroductionFragment.OnFragmentInteractionListener{
+        PersonalDetailsFragment.OnFragmentInteractionListener{
 
     int helpSound = R.raw.helpsound;
     int i =0;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
+
     IntroductionFragment fragment3;
     PersonalDetailsFragment fragment2;
     IntroFragmentDetails fragment;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        fragment3 = IntroductionFragment.newInstance("","");
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        fragment3 = new IntroductionFragment();
         addSlide(fragment3);
         fragment2 = PersonalDetailsFragment.newInstance("hey", "");
         addSlide(fragment2);
@@ -75,14 +72,6 @@ public class IntroActivity extends AppIntro implements
 
         myGPSProvider gps = new myGPSProvider(this);
         gps.refresh(this);
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
     @Override
@@ -102,7 +91,7 @@ public class IntroActivity extends AppIntro implements
             getPermissions();
         if(i==3){
             Toast.makeText(this, "Saving Data", Toast.LENGTH_SHORT).show();
-            SharedPreferences prefs = getSharedPreferences("basic", Context.MODE_APPEND);
+            SharedPreferences prefs = getSharedPreferences("basic", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             String age = ((EditText)findViewById(R.id.introPersonAge)).getText().toString();
             String medics = ((EditText)findViewById(R.id.introPersonMedics)).getText().toString();
@@ -116,7 +105,7 @@ public class IntroActivity extends AppIntro implements
             editor.putString("allergies", allergies);
             editor.putString("blood", blood);
 
-            editor.commit();
+            editor.apply();
         }
         if(i==4){
             async a = new async();
@@ -175,7 +164,7 @@ public class IntroActivity extends AppIntro implements
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        SharedPreferences prefs = getSharedPreferences("basic",Context.MODE_APPEND);
+        SharedPreferences prefs = getSharedPreferences("basic",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         if (requestCode == 1504) {
             if (requestCode != Activity.RESULT_OK) {

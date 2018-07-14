@@ -39,8 +39,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
     }
 
-
-
     class as extends AsyncTask<String, Void, String> {
         @Override
         protected void onPostExecute(String result) {
