@@ -72,7 +72,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         Hospitals("Hospitals", "h1", "hospitals"),
         Chemists("Chemists", "c1", "chemists");
 
-        String activityName, urlPart, dbField;
+        public String activityName, urlPart, dbField;
         Types(String activityName, String urlPart, String dbField){
             this.activityName = activityName;
             this.urlPart = urlPart;

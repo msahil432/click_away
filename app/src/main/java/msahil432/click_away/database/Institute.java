@@ -10,21 +10,28 @@ public class Institute {
     private long uid;
 
     private String name, address, phone, type;
+    private double latitude, longitude;
 
-    public Institute(long uid, String name, String address, String phone, String type) {
+    public Institute(long uid, String name, String address, String phone, String type,
+                     double latitude, double longitude) {
         this.uid = uid;
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.type = type;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     @Ignore
-    public Institute(String name, String address, String phone, String type) {
+    public Institute(String name, String address, String phone, String type,
+                     double latitude, double longitude) {
         this.name = name;
         this.address = address;
         this.phone = phone;
         this.type = type;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public long getUid() {
@@ -65,5 +72,21 @@ public class Institute {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }

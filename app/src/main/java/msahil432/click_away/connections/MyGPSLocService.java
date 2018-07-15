@@ -95,10 +95,12 @@ public class MyGPSLocService extends Service {
         public void onLocationChanged(Location location) {
             Log.e(TAG, "onLocationChanged: " + location);
             mLastLocation.set(location);
-            EventBus.getDefault().post(new LocationData(
+            LocationData locData = new LocationData(
                     location.getLatitude(),
                     location.getLongitude(),
-                    location.getAltitude()));
+                    location.getAltitude());
+            EventBus.getDefault().post(locData);
+            (new FetchAndSaveWorker(locData)).doWork(getApplicationContext());
         }
 
         @Override

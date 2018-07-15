@@ -3,10 +3,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     app:startDestination="@id/mainActivity">
-
+    <activity
+        android:id="@+id/splash_activity"
+        android:name="msahil432.click_away.SplashActivity" />
     <activity
         android:id="@+id/mainActivity"
-        android:name="msahil432.click_away.MainActivity"
+        android:name="msahil432.click_away.mainActivity.MainActivity"
         android:label="main_activity"
         tools:layout="@layout/activity_main" />
     <activity
@@ -15,40 +17,30 @@
         android:label="blood_bank_activity"
         tools:layout="@layout/activity_blood_bank" />
     <activity
-        android:id="@+id/chemistActivity"
-        android:name="msahil432.click_away.list.ChemistActivity"
-        android:label="chemist_activity"
-        tools:layout="@layout/chemist_activity" />
-    <activity
-        android:id="@+id/hospitalsActivity"
-        android:name="msahil432.click_away.list.HospitalsActivity"
-        android:label="hospitals_activity"
-        tools:layout="@layout/hospitals_activity" />
-    <activity
         android:id="@+id/introActivity"
         android:name="msahil432.click_away.intro.IntroActivity"
         android:label="IntroActivity" />
     <fragment
         android:id="@+id/introductionFragment"
-        android:name="msahil432.click_away.intro.IntroductionFragment"
+        android:name="msahil432.click_away.intro.WelcomeAndTcFragment"
         android:label="fragment_introduction"
-        tools:layout="@layout/fragment_introduction" >
+        tools:layout="@layout/fragment_welcome_tc" >
         <action
             android:id="@+id/action_introductionFragment_to_personalDetailsFragment"
             app:destination="@id/personalDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/personalDetailsFragment"
-        android:name="msahil432.click_away.intro.PersonalDetailsFragment"
+        android:name="msahil432.click_away.intro.AddPersonalDetailsFragment"
         android:label="intro_fragment_personal_details"
-        tools:layout="@layout/intro_fragment_personal_details" >
+        tools:layout="@layout/fragment_personal_details" >
         <action
             android:id="@+id/action_personalDetailsFragment_to_introFragmentDetails"
             app:destination="@id/introFragmentDetails" />
     </fragment>
     <fragment
         android:id="@+id/introFragmentDetails"
-        android:name="msahil432.click_away.intro.IntroFragmentDetails"
+        android:name="msahil432.click_away.intro.ContactInfoFragment"
         android:label="intro_fragment_details"
-        tools:layout="@layout/intro_fragment_details" />
+        tools:layout="@layout/fragment_contact_details" />
 </navigation>

@@ -19,15 +19,15 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send Report"
+            android:text="@string/send_report"
             android:textSize="18sp"
-            android:onClick="sendButton"/>
+            android:id="@+id/send_btn"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:textSize="18sp"
-            android:onClick="cancelButton"/>
+            android:id="@+id/cancel_btn"/>
 
     </LinearLayout>
 

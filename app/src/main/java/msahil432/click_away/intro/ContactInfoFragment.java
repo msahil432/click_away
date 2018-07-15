@@ -1,11 +1,9 @@
 package msahil432.click_away.intro;
 
 import android.app.AlertDialog;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
@@ -13,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
@@ -21,33 +20,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.inject.Inject;
-
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import msahil432.click_away.R;
+import msahil432.click_away.extras.MyApplication;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
 
-public class IntroFragmentDetails extends Fragment {
+public class ContactInfoFragment extends Fragment {
 
     public final static int Contact_ResultCode=1011;
 
-    @Inject
-    SharedPreferences prefs;
+    MyApplication.ContactPrefs prefs;
 
-    public IntroFragmentDetails() {    }
+    public ContactInfoFragment() {    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.intro_fragment_details, container, false);
+        View v = inflater.inflate(R.layout.fragment_contact_details, container, false);
         ButterKnife.bind(this, v);
-        prefs = getContext().getSharedPreferences("emergency", Context.MODE_PRIVATE);
+        prefs = MyApplication.getContactPrefs(getContext());
         return v;
     }
 
@@ -59,7 +53,7 @@ public class IntroFragmentDetails extends Fragment {
             Log.e("TAG", "Null Context");
             return;
         }
-        String temp = prefs.getString("helpSound", null);
+        String temp = prefs.helpSound();
         if(temp==null) {
             mediaPlayer = MediaPlayer.create(getContext(), R.raw.helpsound);
             mediaPlayer.start();
@@ -113,9 +107,7 @@ public class IntroFragmentDetails extends Fragment {
         recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
         String t = String.valueOf(System.currentTimeMillis());
         recorder.setOutputFile(fileName+"/"+t);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString("helpSound", t);
-        editor.apply();
+        prefs.setHelpSoung(t);
         recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
         try{
             recorder.prepare();
@@ -123,9 +115,9 @@ public class IntroFragmentDetails extends Fragment {
             Log.d("Recording Audio: ", fileName);
         }catch (Exception e){
             e.printStackTrace();
+            prefs.setHelpSoung(null);
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        //builder.setCancelable(false);
         AlertDialog dialog = builder.create();
         dialog.setButton("Stop", new DialogInterface.OnClickListener() {
             @Override
@@ -154,21 +146,20 @@ public class IntroFragmentDetails extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Context context = getContext();
         if(resultCode==RESULT_OK && requestCode == Contact_ResultCode){
             Uri uri = data.getData();
-            Cursor cursor = getContext().getContentResolver().query(uri,
+            Cursor cursor = context.getContentResolver().query(uri,
                     null, null, null, null);
             if(cursor==null || !cursor.moveToFirst()) return;
             String phoneNo = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-            Set<String> set = prefs.getStringSet("emergencyNames", new HashSet<String>());
-            set.add(phoneNo);
-            prefs.edit().putStringSet("emergencyNames", set).apply();
-            currentBtn.setText(getName(phoneNo));
+            prefs.addContact(phoneNo);
+            currentBtn.setText(getName(context, phoneNo));
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private String getName(String address) {
+    private String getName(Context context, String address) {
         if (address == null || address.isEmpty())
             return address;
         while(address.contains(" ")){
@@ -176,11 +167,16 @@ public class IntroFragmentDetails extends Fragment {
         }
 
         Cursor cursor;
-        Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(address));
+        Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI,
+                Uri.encode(address));
         String name = address;
         try {
-            cursor = getContext().getContentResolver().query(uri, new String[]{BaseColumns._ID, ContactsContract.PhoneLookup.DISPLAY_NAME}, null, null, null);
-            if (cursor.moveToNext())
+            cursor = context.getContentResolver().query(uri,
+                    new String[]{
+                            BaseColumns._ID,
+                            ContactsContract.PhoneLookup.DISPLAY_NAME
+                    }, null, null, null);
+            if (cursor != null && cursor.moveToFirst())
                 name = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
             cursor.close();
         } catch (Exception e) {

@@ -13,14 +13,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import msahil432.click_away.R;
 
-public class IntroductionFragment extends Fragment {
+public class WelcomeAndTcFragment extends Fragment {
 
-    public IntroductionFragment() { }
+    public WelcomeAndTcFragment() { }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_introduction, container, false);
+        View v = inflater.inflate(R.layout.fragment_welcome_tc, container, false);
         ButterKnife.bind(this, v);
         return v;
     }

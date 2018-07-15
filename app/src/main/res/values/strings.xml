@@ -10,8 +10,13 @@
     <string name="warning">Warning : This is a Demo App</string>
     <string name="read_priavcy_policy_here">Tap here to read Privacy Policy</string>
     <string name="permissions_reason">
-        Following Permissions are needed for mentioned reasons: \n
-
+        <i>On the next Screen, Provide Following Permissions as for mentioned reasons: </i>\n
+        <b> 1. Contacts :   </b>To enable selection of Emergency Contacts and getting their Names and Phone Numbers to send SMS when needed.\n
+        <b> 2. SMS :        </b>To enable to send SMS without opening SMS Application.\n
+        <b> 3. Location :   </b>To share your location in SMS and also present Hospitals, Chemists and Blood Banks near you.\n
+        <b> 4. Phone :      </b>To access Mobile Network and WiFi based location, this helps in getting GPS results faster.\n
+        <b> 5. Audio :      </b>To enable you to record your own Emergency Message.\n
+        <b> 6. Storage :    </b>To store your recorded message on the device.\n
     </string>
     <string name="privacy_policy">https://docs.google.com/document/d/1etloEvZLytV1Xkjugk_4njgn7s8e_aXlXTF32HWn1Wo/</string>
     <string name="name">Name:</string>
@@ -28,4 +33,9 @@
     <string name="second">Second</string>
     <string name="third">Third</string>
     <string name="fourth">Fourth</string>
+    <string name="sms_message">I am in Emergency, Please Help me.  My last location was :</string>
+    <string name="g_maps_url">https://www.google.co.in/maps/</string>
+    <string name="permissions_necessary">These permissions are necessary for app to function!</string>
+    <string name="cancel">Cancel</string>
+    <string name="send_report">Send Report</string>
 </resources>

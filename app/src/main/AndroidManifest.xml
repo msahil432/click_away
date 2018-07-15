@@ -33,7 +33,7 @@
         <activity android:name=".list.HospitalsActivity" />
         <activity android:name=".list.BloodBankActivity" />
         <activity android:name=".intro.IntroActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".mainActivity.MainActivity"/>
 
         <service android:name=".connections.MyGPSLocService"
             android:process=".my_gps_loc_service" />

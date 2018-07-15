@@ -4,17 +4,17 @@
     <data>
         <variable
             name="user"
-            type="msahil432.click_away.User" />
+            type="msahil432.click_away.mainActivity.User" />
     </data>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@color/white">
+        android:layout_margin="8dp">
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,72 +24,77 @@
             android:textColor="@color/text_black"
             android:textStyle="bold"/>
         <com.github.florent37.materialtextfield.MaterialTextField
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:mtf_labelColor="@color/text_black">
-            <EditText
+            <android.support.v7.widget.AppCompatEditText
+                android:autofillHints="@string/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
                 android:text="@{user.name}"
-                android:inputType="none"
+                android:inputType="textAutoComplete"
                 android:textColor="@color/text_black"
                 android:textSize="18sp" />
         </com.github.florent37.materialtextfield.MaterialTextField>
         <com.github.florent37.materialtextfield.MaterialTextField
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:mtf_labelColor="@color/text_black">
-            <EditText
+            <android.support.v7.widget.AppCompatEditText
+                android:autofillHints="@string/age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/age"
                 android:text="@{user.age}"
-                android:inputType="none"
+                android:inputType="numberDecimal"
                 android:textColor="@color/text_black"
                 android:textSize="18sp" />
         </com.github.florent37.materialtextfield.MaterialTextField>
         <com.github.florent37.materialtextfield.MaterialTextField
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:mtf_labelColor="@color/text_black">
-            <EditText
+            <android.support.v7.widget.AppCompatEditText
+                android:autofillHints="@string/blood_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/blood_group"
                 android:text="@{user.bloodGroup}"
-                android:inputType="none"
+                android:inputType="textCapWords"
                 android:textColor="@color/text_black"
                 android:textSize="18sp" />
         </com.github.florent37.materialtextfield.MaterialTextField>
         <com.github.florent37.materialtextfield.MaterialTextField
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:mtf_labelColor="@color/text_black">
-            <EditText
+            <android.support.v7.widget.AppCompatEditText
+                android:autofillHints="@string/allergies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/allergies"
                 android:text="@{user.allergies}"
-                android:inputType="none"
+                android:inputType="textAutoComplete"
                 android:textColor="@color/text_black"
                 android:textSize="18sp" />
         </com.github.florent37.materialtextfield.MaterialTextField>
         <com.github.florent37.materialtextfield.MaterialTextField
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:mtf_labelColor="@color/text_black">
-            <EditText
+            <android.support.v7.widget.AppCompatEditText
+                android:autofillHints="@string/current_medications"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/current_medications"
                 android:text="@{user.medications}"
-                android:inputType="none"
+                android:inputType="textAutoComplete"
                 android:textColor="@color/text_black"
                 android:textSize="18sp" />
         </com.github.florent37.materialtextfield.MaterialTextField>

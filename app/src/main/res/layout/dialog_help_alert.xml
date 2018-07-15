@@ -4,7 +4,7 @@
     <data>
         <variable
             name="user"
-            type="msahil432.click_away.User" />
+            type="msahil432.click_away.mainActivity.User" />
     </data>
     <com.skyfishjy.library.RippleBackground
         android:layout_width="match_parent"

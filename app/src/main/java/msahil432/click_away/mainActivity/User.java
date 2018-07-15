@@ -1,4 +1,4 @@
-package msahil432.click_away;
+package msahil432.click_away.mainActivity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
