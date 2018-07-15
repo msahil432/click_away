@@ -23,6 +23,9 @@ import java.util.Set;
 import msahil432.click_away.extras.MyExceptionHandler;
 import msahil432.click_away.connections.myGPSProvider;
 import msahil432.click_away.connections.myHTTP;
+import msahil432.click_away.list.BloodBankActivity;
+import msahil432.click_away.list.ChemistActivity;
+import msahil432.click_away.list.HospitalsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.main_activity);
+        setContentView(R.layout.activity_main);
     }
 
     class as extends AsyncTask<String, Void, String> {

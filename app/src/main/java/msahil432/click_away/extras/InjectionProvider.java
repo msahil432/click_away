@@ -1,5 +1,8 @@
 package msahil432.click_away.extras;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -17,5 +20,11 @@ public class InjectionProvider {
     @Singleton
     Retrofit getRetroFit(){
         return new Retrofit.Builder().baseUrl(RetroFitService.baseUrl).build();
+    }
+
+    @Provides
+    @Singleton
+    SharedPreferences getEmergencyPrefs(Context context){
+        return context.getSharedPreferences("emergency", Context.MODE_PRIVATE);
     }
 }

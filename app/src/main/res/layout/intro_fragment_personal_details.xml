@@ -1,70 +1,98 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="nottoworry.clickaway.PersonalDetailsFragment">
-
-    <RelativeLayout
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="user"
+            type="msahil432.click_away.User" />
+    </data>
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#5e75dc">
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
         android:layout_margin="8dp"
-        android:id="@+id/introdummytext"
-        android:text="Enter the following personal info"/>
-
-        <LinearLayout
+        android:background="@color/white">
+        <android.support.v7.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_below="@+id/introdummytext"
-            android:layout_alignParentStart="true"
-            android:background="#9fa8da"
-            android:layout_margin="4dp">
+            android:text="@string/enter_information"
+            android:gravity="center"
+            android:textSize="24sp"
+            android:textColor="@color/text_black"
+            android:textStyle="bold"/>
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            app:mtf_labelColor="@color/text_black">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Name"
-                android:padding="14dp"
-                android:layout_margin="12dp"
-                android:imeOptions="actionDone"
-                android:id="@+id/introPersonName"/>
+                android:hint="@string/name"
+                android:text="@{user.name}"
+                android:inputType="none"
+                android:textColor="@color/text_black"
+                android:textSize="18sp" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            app:mtf_labelColor="@color/text_black">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Age"
-                android:padding="14dp"
-                android:layout_margin="12dp"
-                android:inputType="number"
-                android:imeOptions="actionDone"
-                android:id="@+id/introPersonAge"/>
+                android:hint="@string/age"
+                android:text="@{user.age}"
+                android:inputType="none"
+                android:textColor="@color/text_black"
+                android:textSize="18sp" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            app:mtf_labelColor="@color/text_black">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Blood Group"
-                android:padding="14dp"
-                android:imeOptions="actionDone"
-                android:layout_margin="12dp"
-                android:id="@+id/introPersonBlood"/>
+                android:hint="@string/blood_group"
+                android:text="@{user.bloodGroup}"
+                android:inputType="none"
+                android:textColor="@color/text_black"
+                android:textSize="18sp" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            app:mtf_labelColor="@color/text_black">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Any Allergies"
-                android:padding="14dp"
-                android:imeOptions="actionDone"
-                android:layout_margin="12dp"
-                android:id="@+id/introPersonAllergies"/>
+                android:hint="@string/allergies"
+                android:text="@{user.allergies}"
+                android:inputType="none"
+                android:textColor="@color/text_black"
+                android:textSize="18sp" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            app:mtf_labelColor="@color/text_black">
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Any Active Medication"
-                android:padding="14dp"
-                android:imeOptions="actionDone"
-                android:layout_margin="12dp"
-                android:id="@+id/introPersonMedics"/>
-        </LinearLayout>
-    </RelativeLayout>
-</FrameLayout>
+                android:hint="@string/current_medications"
+                android:text="@{user.medications}"
+                android:inputType="none"
+                android:textColor="@color/text_black"
+                android:textSize="18sp" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+    </LinearLayout>
+    </ScrollView>
+</layout>

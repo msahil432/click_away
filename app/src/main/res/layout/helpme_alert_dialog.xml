@@ -1,44 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#c62828">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name: "
-        android:padding="8dp"
-        android:textSize="24sp"
-        android:id="@+id/dialogName"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:padding="8dp"
-        android:text="Age: "
-        android:id="@+id/dialogAge"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:padding="8dp"
-        android:text="Allergies: "
-        android:id="@+id/dialogAllergies"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:padding="8dp"
-        android:text="Current Medications: "
-        android:id="@+id/dialogMedics"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:padding="8dp"
-        android:text="Blood Group: "
-        android:id="@+id/dialogBlood"/>
-
-</LinearLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="user"
+            type="msahil432.click_away.User" />
+    </data>
+    <com.skyfishjy.library.RippleBackground
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/content"
+        app:rb_color="@color/red"
+        app:rb_radius="32dp"
+        app:rb_rippleAmount="4"
+        app:rb_duration="3000"
+        app:rb_scale="6">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="300dp"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                app:mtf_labelColor="@color/text_black">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name"
+                    android:text="@{user.name}"
+                    android:inputType="none"
+                    android:textColor="@color/text_black"
+                    android:textSize="18sp" />
+            </com.github.florent37.materialtextfield.MaterialTextField>
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                app:mtf_labelColor="@color/text_black">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/age"
+                    android:text="@{user.age}"
+                    android:inputType="none"
+                    android:textColor="@color/text_black"
+                    android:textSize="18sp" />
+            </com.github.florent37.materialtextfield.MaterialTextField>
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                app:mtf_labelColor="@color/text_black">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/blood_group"
+                    android:text="@{user.bloodGroup}"
+                    android:inputType="none"
+                    android:textColor="@color/text_black"
+                    android:textSize="18sp" />
+            </com.github.florent37.materialtextfield.MaterialTextField>
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                app:mtf_labelColor="@color/text_black">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/allergies"
+                    android:text="@{user.allergies}"
+                    android:inputType="none"
+                    android:textColor="@color/text_black"
+                    android:textSize="18sp" />
+            </com.github.florent37.materialtextfield.MaterialTextField>
+            <com.github.florent37.materialtextfield.MaterialTextField
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                app:mtf_labelColor="@color/text_black">
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/current_medications"
+                    android:text="@{user.medications}"
+                    android:inputType="none"
+                    android:textColor="@color/text_black"
+                    android:textSize="18sp" />
+            </com.github.florent37.materialtextfield.MaterialTextField>
+        </LinearLayout>
+        </RelativeLayout>
+    </com.skyfishjy.library.RippleBackground>
+</layout>

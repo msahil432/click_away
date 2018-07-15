@@ -1,40 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/clickaway"
-            android:id="@+id/listThumnail"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Name of institution"
-            android:textSize="24sp"
-            android:id="@+id/listName"
-            android:layout_centerHorizontal="true"
-            android:layout_toLeftOf="@+id/listCall"
-            android:layout_toRightOf="@+id/listThumnail"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="address"
-            android:layout_below="@+id/listName"
-            android:id="@+id/listAddress"
-            android:layout_toLeftOf="@+id/listCall"
-            android:layout_toRightOf="@+id/listThumnail"
-            android:textSize="18sp"/>
-        <Button
-            android:layout_width="60dp"
-            android:id="@+id/listCall"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/sym_call_outgoing"
-            android:layout_alignParentEnd="true"/>
-    </RelativeLayout>
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/list_thumbnail"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/clickaway"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</LinearLayout>
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/institute_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="Name of institution"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/institute_call_btn"
+        app:layout_constraintStart_toEndOf="@+id/list_thumbnail"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/institute_address"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="J -3 ' A Krishan Vihar, delhi 110086, Near "
+        android:lines="3"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/institute_call_btn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/list_thumbnail"
+        app:layout_constraintTop_toBottomOf="@+id/institute_name" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/institute_call_btn"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="0dp"
+        android:backgroundTint="@color/white"
+        android:src="@android:drawable/sym_call_outgoing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

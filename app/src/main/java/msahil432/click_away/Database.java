@@ -37,7 +37,7 @@ public class Database extends mySqlDb {
     int nameColIndex, addressColIndex, phoneColIndex, typeColIndex;
 
 
-    Database(Context context){
+    public Database(Context context){
         super(context, TABLE_CREATE_SQL, DB_Name, TABLE_NAME);
         this.mContext = context;
     }
@@ -167,7 +167,7 @@ public class Database extends mySqlDb {
             cursor.close();
         }finally {
             if(hos==null){
-                SharedPreferences prefs = mContext.getSharedPreferences("basic", Context.MODE_APPEND);
+                SharedPreferences prefs = mContext.getSharedPreferences("basic", Context.MODE_PRIVATE);
                 Set<String> names = prefs.getStringSet("chemistName", null);
                 Set<String> phone = prefs.getStringSet("chemistPhone", null);
                 Set<String> address = prefs.getStringSet("chemistAddress", null);

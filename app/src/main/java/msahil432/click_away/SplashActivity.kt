@@ -8,6 +8,7 @@ import android.view.Window
 import msahil432.click_away.extras.MyExceptionHandler
 import android.location.LocationManager
 import android.support.v7.app.AlertDialog
+import msahil432.click_away.intro.IntroActivity
 import java.util.*
 import kotlin.concurrent.schedule
 

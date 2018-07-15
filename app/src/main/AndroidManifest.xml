@@ -29,11 +29,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".extras.ForceCloseActivity" />
-        <activity android:name=".ChemistActivity" />
-        <activity android:name=".HospitalsActivity" />
-        <activity android:name=".BloodBankActivity" />
-        <activity android:name=".IntroActivity" />
+        <activity android:name=".list.ChemistActivity" />
+        <activity android:name=".list.HospitalsActivity" />
+        <activity android:name=".list.BloodBankActivity" />
+        <activity android:name=".intro.IntroActivity" />
         <activity android:name=".MainActivity"/>
+
+        <service android:name=".connections.MyGPSLocService"
+            android:process=".my_gps_loc_service" />
     </application>
 
 </manifest>

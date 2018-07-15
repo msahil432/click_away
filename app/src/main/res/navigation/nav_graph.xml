@@ -8,29 +8,29 @@
         android:id="@+id/mainActivity"
         android:name="msahil432.click_away.MainActivity"
         android:label="main_activity"
-        tools:layout="@layout/main_activity" />
+        tools:layout="@layout/activity_main" />
     <activity
         android:id="@+id/bloodBankActivity"
-        android:name="msahil432.click_away.BloodBankActivity"
+        android:name="msahil432.click_away.list.BloodBankActivity"
         android:label="blood_bank_activity"
-        tools:layout="@layout/blood_bank_activity" />
+        tools:layout="@layout/activity_blood_bank" />
     <activity
         android:id="@+id/chemistActivity"
-        android:name="msahil432.click_away.ChemistActivity"
+        android:name="msahil432.click_away.list.ChemistActivity"
         android:label="chemist_activity"
         tools:layout="@layout/chemist_activity" />
     <activity
         android:id="@+id/hospitalsActivity"
-        android:name="msahil432.click_away.HospitalsActivity"
+        android:name="msahil432.click_away.list.HospitalsActivity"
         android:label="hospitals_activity"
         tools:layout="@layout/hospitals_activity" />
     <activity
         android:id="@+id/introActivity"
-        android:name="msahil432.click_away.IntroActivity"
+        android:name="msahil432.click_away.intro.IntroActivity"
         android:label="IntroActivity" />
     <fragment
         android:id="@+id/introductionFragment"
-        android:name="msahil432.click_away.IntroductionFragment"
+        android:name="msahil432.click_away.intro.IntroductionFragment"
         android:label="fragment_introduction"
         tools:layout="@layout/fragment_introduction" >
         <action
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/personalDetailsFragment"
-        android:name="msahil432.click_away.PersonalDetailsFragment"
+        android:name="msahil432.click_away.intro.PersonalDetailsFragment"
         android:label="intro_fragment_personal_details"
         tools:layout="@layout/intro_fragment_personal_details" >
         <action
@@ -48,7 +48,7 @@
     </fragment>
     <fragment
         android:id="@+id/introFragmentDetails"
-        android:name="msahil432.click_away.IntroFragmentDetails"
+        android:name="msahil432.click_away.intro.IntroFragmentDetails"
         android:label="intro_fragment_details"
         tools:layout="@layout/intro_fragment_details" />
 </navigation>
