@@ -1,4 +1,4 @@
-package msahil432.click_away.extras;
+package msahil432.click_away.forceClose;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.content.pm.PackageInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +19,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import msahil432.click_away.R;
 import msahil432.click_away.SplashActivity;
+
+import static msahil432.click_away.extras.MyApplication.Report;
 
 public class ForceCloseActivity extends AppCompatActivity {
     JSONObject obj;
@@ -50,8 +51,9 @@ public class ForceCloseActivity extends AppCompatActivity {
     private void buildData(){
         try {
             Exception ex = (Exception) data.getSerializable("ex");
+            Report("Force Close ","Exception: ", ex);
         }catch (Exception e){
-            Log.e("FC ACT", "Couldn't cast to exception", e);
+            Report("FC ACT", "Couldn't cast to exception", e);
         }
 
         COE = data.getString("CAUSE_OF_ERROR");

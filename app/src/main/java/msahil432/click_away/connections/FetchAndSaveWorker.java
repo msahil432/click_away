@@ -1,7 +1,6 @@
 package msahil432.click_away.connections;
 
 import android.content.Context;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -10,12 +9,13 @@ import msahil432.click_away.database.Institute;
 import msahil432.click_away.database.MyDao;
 import msahil432.click_away.database.MyDatabase;
 import msahil432.click_away.extras.RetroFitService;
-import msahil432.click_away.list.base.BaseActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
+import static msahil432.click_away.extras.MyApplication.Report;
 import static msahil432.click_away.list.base.BaseActivity.Types.BloodBanks;
 import static msahil432.click_away.list.base.BaseActivity.Types.Chemists;
 import static msahil432.click_away.list.base.BaseActivity.Types.Hospitals;
@@ -29,6 +29,7 @@ public class FetchAndSaveWorker {
         this.locationData = locationData;
         RetroFitService service = new Retrofit.Builder()
                 .baseUrl(RetroFitService.baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(RetroFitService.class);
         request = service.getData(locationData.getLatitude()+"",
@@ -43,6 +44,7 @@ public class FetchAndSaveWorker {
 
     private void saveToDb(JSONObject res){
         try {
+            Report("Fetch&Save Worker", "Saving res to db");
             MyDao dao = MyDatabase.instance(context).getDao();
             if (res.has(Hospitals.dbField)) {
                 JSONArray hospitals = res.getJSONArray(Hospitals.dbField);
@@ -100,17 +102,17 @@ public class FetchAndSaveWorker {
         @Override
         public void onResponse(Call<JSONObject> call, Response<JSONObject> response) {
             try{
-                Log.e("TAG", response.body().toString());
+                Report("",response.raw().request().url().toString());
+                //Report(response.raw().request().url().toString(), response.body().toString());
                 saveToDb(response.body());
             }catch (Exception e){
-                Log.e("TAG", response.errorBody().toString());
-                e.printStackTrace();
+                Report("response", response.errorBody().toString(), e);
             }
         }
 
         @Override
         public void onFailure(Call<JSONObject> call, Throwable t) {
-            t.printStackTrace();
+            Report("TAG", "OnFailure", t);
         }
     };
 }

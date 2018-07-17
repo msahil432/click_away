@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.Set;
@@ -21,7 +22,7 @@ import butterknife.OnClick;
 import msahil432.click_away.R;
 import msahil432.click_away.connections.MyGPSLocService;
 import msahil432.click_away.extras.MyApplication;
-import msahil432.click_away.extras.MyExceptionHandler;
+import msahil432.click_away.forceClose.MyExceptionHandler;
 import msahil432.click_away.list.BloodBankActivity;
 import msahil432.click_away.list.ChemistActivity;
 import msahil432.click_away.list.HospitalsActivity;
@@ -35,8 +36,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        EventBus.getDefault().register(this);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        startService(new Intent(this, MyGPSLocService.class));
+    }
+
+    @Override
+    protected void onDestroy() {
+        if(mediaPlayer!=null) {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+        super.onDestroy();
     }
 
     private MyGPSLocService.LocationData locationData;
@@ -45,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         this.locationData = locationData;
     }
 
+    MediaPlayer mediaPlayer;
     @OnClick(R.id.main_help_btn)
     public void helpMeBtn(AppCompatButton button){
         AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
@@ -54,8 +68,7 @@ public class MainActivity extends AppCompatActivity {
         }
         String temp = MyApplication.getContactPrefs(this).helpSound();
         int helpSound = R.raw.helpsound;
-        MediaPlayer mediaPlayer;
-        if(temp==null) {
+        if(temp ==null || temp.isEmpty()) {
             mediaPlayer = MediaPlayer.create(this, helpSound);
         }else{
             try {
@@ -63,8 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 temp = getExternalCacheDir().getAbsolutePath()+"/"+temp;
                 mediaPlayer.setDataSource(temp);
                 mediaPlayer.prepare();
-                mediaPlayer.setLooping(true);
-                mediaPlayer.start();
             }catch (Exception e){
                 e.printStackTrace();
                 Toast.makeText(this, "Can't Play Custom Audio, Sorry!",
@@ -72,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 mediaPlayer = MediaPlayer.create(this, helpSound);
             }
         }
+        mediaPlayer.setLooping(true);
+        mediaPlayer.start();
         sosBtn();
         button.setClickable(false);
         HelpMeAlertDialog dialog = new HelpMeAlertDialog(this);

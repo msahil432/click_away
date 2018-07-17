@@ -8,9 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import msahil432.click_away.R;
 import msahil432.click_away.mainActivity.User;
 import msahil432.click_away.databinding.FragmentPersonalDetailsBinding;
+
+import static msahil432.click_away.extras.MyApplication.Report;
 
 public class AddPersonalDetailsFragment extends Fragment {
 
@@ -23,6 +28,7 @@ public class AddPersonalDetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater,
                 R.layout.fragment_personal_details, container, false);
+        EventBus.getDefault().register(this);
         return binding.getRoot();
     }
 
@@ -32,20 +38,16 @@ public class AddPersonalDetailsFragment extends Fragment {
         binding.setUser(User.Builder(getContext()));
     }
 
-    @Override
-    public void onPause() {
-        User user = binding.getUser();
-        if(user!=null)
-            user.saveUser(getContext());
-        super.onPause();
-    }
-
-    @Override
-    public void onDestroyView() {
-        User user = binding.getUser();
-        if(user!=null)
-            user.saveUser(getContext());
-        binding.unbind();
-        super.onDestroyView();
+    @Subscribe
+    public void fragmentSwipe(Double d){
+        if(d.equals(Double.valueOf("1504.2014"))){
+            User user = binding.getUser();
+            if(user!=null){
+                user.saveUser(getContext());
+                Report("PersonalDetailsFrag", user.toString());
+                return;
+            }
+            Report("PersonalDetailsFrag", "Null User!");
+        }
     }
 }

@@ -3,7 +3,11 @@ package msahil432.click_away.mainActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-public class User {
+import java.io.Serializable;
+
+import static msahil432.click_away.extras.MyApplication.Report;
+
+public class User implements Serializable {
     private String name, allergies, medications, bloodGroup, age;
 
     public User(String name, String age, String allergies, String medications, String bloodGroup) {
@@ -42,8 +46,8 @@ public class User {
         return bloodGroup;
     }
 
-    public void setBloodGroup(String bloodGroup) {
-        this.bloodGroup = bloodGroup;
+    public void setBloodGroup(String blood_group) {
+        this.bloodGroup = blood_group;
     }
 
     public String getAge() {
@@ -90,7 +94,7 @@ public class User {
             editor.apply();
             return true;
         }catch (Exception e){
-            e.printStackTrace();
+            Report("Saving User", "Error: ", e);
         }
         return false;
     }

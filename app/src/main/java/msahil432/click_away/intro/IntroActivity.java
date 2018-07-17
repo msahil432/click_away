@@ -15,9 +15,13 @@ import android.widget.Toast;
 
 import com.github.paolorotolo.appintro.AppIntro;
 
+import org.greenrobot.eventbus.EventBus;
+
 import msahil432.click_away.mainActivity.MainActivity;
 import msahil432.click_away.R;
 import msahil432.click_away.extras.MyApplication;
+
+import static msahil432.click_away.extras.MyApplication.Report;
 
 /**
  *  Created by msahil432
@@ -55,6 +59,10 @@ public class IntroActivity extends AppIntro{
         i++;
         if(i>1)
             getPermissions();
+        if(i>2) {
+            EventBus.getDefault().post(Double.valueOf("1504.2014"));
+            Report("Intro Act", "Sending event");
+        }
         super.onSlideChanged(oldFragment, newFragment);
     }
 

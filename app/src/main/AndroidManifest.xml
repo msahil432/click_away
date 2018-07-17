@@ -19,6 +19,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".extras.MyApplication"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity">
             <intent-filter>
@@ -28,7 +29,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".extras.ForceCloseActivity" />
+        <activity android:name=".forceClose.ForceCloseActivity" />
         <activity android:name=".list.ChemistActivity" />
         <activity android:name=".list.HospitalsActivity" />
         <activity android:name=".list.BloodBankActivity" />
@@ -36,6 +37,7 @@
         <activity android:name=".mainActivity.MainActivity"/>
 
         <service android:name=".connections.MyGPSLocService"
+            android:exported="true"
             android:process=".my_gps_loc_service" />
     </application>
 

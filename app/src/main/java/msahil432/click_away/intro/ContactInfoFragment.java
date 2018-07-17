@@ -14,7 +14,6 @@ import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +25,7 @@ import msahil432.click_away.R;
 import msahil432.click_away.extras.MyApplication;
 
 import static android.app.Activity.RESULT_OK;
-import static android.content.ContentValues.TAG;
+import static msahil432.click_away.extras.MyApplication.Report;
 
 public class ContactInfoFragment extends Fragment {
 
@@ -50,7 +49,7 @@ public class ContactInfoFragment extends Fragment {
     public void playSound(){
         Context context = getContext();
         if(context==null) {
-            Log.e("TAG", "Null Context");
+            Report("TAG", "Null Context");
             return;
         }
         String temp = prefs.helpSound();
@@ -66,7 +65,7 @@ public class ContactInfoFragment extends Fragment {
                 mediaPlayer.start();
             }catch (Exception e){
                 e.printStackTrace();
-                Log.e("help", temp, e);
+                Report("help", temp, e);
                 Toast.makeText(context, "Error while Playing", Toast.LENGTH_LONG).show();
                 mediaPlayer.stop();
                 return;
@@ -97,43 +96,47 @@ public class ContactInfoFragment extends Fragment {
     public void recordNew(){
         Context context = getContext();
         if(context==null) {
-            Log.e("TAG", "Null Context");
+            Report("TAG", "Null Context");
             return;
         }
-
-        String fileName = context.getExternalCacheDir().getAbsolutePath();
-        recorder = new MediaRecorder();
-        recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-        String t = String.valueOf(System.currentTimeMillis());
-        recorder.setOutputFile(fileName+"/"+t);
-        prefs.setHelpSoung(t);
-        recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-        try{
-            recorder.prepare();
-            recorder.start();
-            Log.d("Recording Audio: ", fileName);
+        try {
+            String fileName = context.getExternalCacheDir().getAbsolutePath();
+            recorder = new MediaRecorder();
+            recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+            recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
+            String t = String.valueOf(System.currentTimeMillis());
+            recorder.setOutputFile(fileName + "/" + t);
+            prefs.setHelpSound(t);
+            recorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
+            try {
+                recorder.prepare();
+                recorder.start();
+                Report("Recording Audio: ", fileName);
+            } catch (Exception e) {
+                Report("Recording Audio: ", fileName, e);
+                prefs.setHelpSound("");
+            }
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            AlertDialog dialog = builder.create();
+            dialog.setButton("Stop", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.setMessage("Press Stop when done \n");
+            dialog.show();
+            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                @Override
+                public void onDismiss(DialogInterface dialog) {
+                    recorder.release();
+                    recorder = null;
+                }
+            });
         }catch (Exception e){
-            e.printStackTrace();
-            prefs.setHelpSoung(null);
+            Report("Recording Audio: ", "error", e);
+            prefs.setHelpSound("");
         }
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        AlertDialog dialog = builder.create();
-        dialog.setButton("Stop", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        dialog.setMessage("Press Stop when done \n");
-        dialog.show();
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                recorder.release();
-                recorder = null;
-            }
-        });
     }
 
     AppCompatButton currentBtn;
@@ -180,8 +183,7 @@ public class ContactInfoFragment extends Fragment {
                 name = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.DISPLAY_NAME));
             cursor.close();
         } catch (Exception e) {
-            Log.d(TAG, "Failed to find name for address " + address);
-            e.printStackTrace();
+            Report("", "Failed to find name for address " + address, e);
         }
         return name;
     }

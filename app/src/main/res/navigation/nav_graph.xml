@@ -15,7 +15,7 @@
         android:id="@+id/bloodBankActivity"
         android:name="msahil432.click_away.list.BloodBankActivity"
         android:label="blood_bank_activity"
-        tools:layout="@layout/activity_blood_bank" />
+        tools:layout="@layout/activity_list" />
     <activity
         android:id="@+id/introActivity"
         android:name="msahil432.click_away.intro.IntroActivity"

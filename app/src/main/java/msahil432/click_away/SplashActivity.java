@@ -9,7 +9,7 @@ import android.view.Window;
 
 import msahil432.click_away.connections.MyGPSLocService;
 import msahil432.click_away.extras.MyApplication;
-import msahil432.click_away.extras.MyExceptionHandler;
+import msahil432.click_away.forceClose.MyExceptionHandler;
 import android.location.LocationManager;
 import android.support.v7.app.AlertDialog;
 

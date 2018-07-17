@@ -1,4 +1,4 @@
-package msahil432.click_away.extras;
+package msahil432.click_away.forceClose;
 
 import android.app.Activity;
 import android.content.Intent;
