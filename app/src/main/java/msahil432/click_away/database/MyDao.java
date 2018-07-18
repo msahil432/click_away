@@ -12,11 +12,11 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 @Dao
 public interface MyDao {
 
-    @Query("SELECT * FROM institutes WHERE type LIKE :mtype")
+    @Query("SELECT * FROM institutes WHERE organization = :mtype")
     public DataSource.Factory<Integer, Institute> getByType(String mtype);
 
     @Query("SELECT * FROM institutes")
-    public List<Institute> get(String mtype);
+    public List<Institute> get();
 
     @Insert(onConflict = REPLACE)
     public void save(Institute... institutes);

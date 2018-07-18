@@ -58,24 +58,23 @@ public class User implements Serializable {
         this.age = age;
     }
 
+    public boolean isEmpty(){
+        if(name!=null && !name.isEmpty())
+            if(age!=null && !age.isEmpty())
+                if(allergies!=null && !allergies.isEmpty())
+                    if(bloodGroup!=null && !bloodGroup.isEmpty())
+                        return medications == null || medications.isEmpty();
+        return true;
+    }
 
     public static User Builder(Context context){
         SharedPreferences prefs = context.getSharedPreferences("user", Context.MODE_PRIVATE);
 
-        String name = prefs.getString("name", null);
-        if(name==null) return null;
-
-        String age = prefs.getString("age", null);
-        if(age==null) return null;
-
-        String allergies = prefs.getString("allergies", null);
-        if(allergies==null) return null;
-
-        String medications = prefs.getString("medications", null);
-        if(medications==null) return null;
-
-        String bg = prefs.getString("bloodGroup", null);
-        if(bg==null) return null;
+        String name = prefs.getString("name", "");
+        String age = prefs.getString("age", "");
+        String allergies = prefs.getString("allergies", "");
+        String medications = prefs.getString("medications", "");
+        String bg = prefs.getString("bloodGroup", "");
 
         return new User(name, age, allergies, medications, bg);
     }

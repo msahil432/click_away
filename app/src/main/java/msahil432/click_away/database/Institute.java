@@ -9,27 +9,27 @@ public class Institute {
     @PrimaryKey(autoGenerate = true)
     private long uid;
 
-    private String name, address, phone, type;
+    private String name, address, phone, organization;
     private double latitude, longitude;
 
-    public Institute(long uid, String name, String address, String phone, String type,
+    public Institute(long uid, String name, String address, String phone, String organization,
                      double latitude, double longitude) {
         this.uid = uid;
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.type = type;
+        this.organization = organization;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
     @Ignore
-    public Institute(String name, String address, String phone, String type,
+    public Institute(String name, String address, String phone, String organization,
                      double latitude, double longitude) {
         this.name = name;
         this.address = address;
         this.phone = phone;
-        this.type = type;
+        this.organization = organization;
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -66,12 +66,12 @@ public class Institute {
         this.phone = phone;
     }
 
-    public String getType() {
-        return type;
+    public String getOrganization() {
+        return organization;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setOrganization(String organization) {
+        this.organization = organization;
     }
 
     public double getLatitude() {

@@ -14,7 +14,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:paddingBottom="120dp">
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/name"
-                android:text="@{user.name}"
+                android:text="@={user.name}"
                 android:inputType="textAutoComplete"
                 android:textColor="@color/text_black"
                 android:textSize="18sp" />
@@ -48,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/age"
-                android:text="@{user.age}"
+                android:text="@={user.age}"
                 android:inputType="numberDecimal"
                 android:textColor="@color/text_black"
                 android:textSize="18sp" />
@@ -63,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/blood_group"
-                android:text="@{user.bloodGroup}"
+                android:text="@={user.bloodGroup}"
                 android:inputType="textCapWords"
                 android:textColor="@color/text_black"
                 android:textSize="18sp" />
@@ -78,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/allergies"
-                android:text="@{user.allergies}"
+                android:text="@={user.allergies}"
                 android:inputType="textAutoComplete"
                 android:textColor="@color/text_black"
                 android:textSize="18sp" />
@@ -93,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/current_medications"
-                android:text="@{user.medications}"
+                android:text="@={user.medications}"
                 android:inputType="textAutoComplete"
                 android:textColor="@color/text_black"
                 android:textSize="18sp" />

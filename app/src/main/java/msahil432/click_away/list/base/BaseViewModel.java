@@ -24,10 +24,10 @@ public class BaseViewModel extends ViewModel {
                 new Runnable() {
                     @Override
                     public void run() {
-                        List<Institute> institutes = dao.get(type.dbField);
-                        Report("Size ",institutes.size()+"");
-                        for (Institute i: institutes) {
-                            Report("Size ",i.getType());
+                        List<Institute> m = dao.get();
+                        Report("Size ",m.size()+"");
+                        for (Institute i: m) {
+                            Report("Size ",i.getOrganization());
                         }
                     }
                 }

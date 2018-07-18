@@ -6,95 +6,61 @@
             name="user"
             type="msahil432.click_away.mainActivity.User" />
     </data>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
     <com.skyfishjy.library.RippleBackground
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/content"
+        android:id="@+id/background_ripple"
         app:rb_color="@color/red"
-        app:rb_radius="32dp"
-        app:rb_rippleAmount="4"
-        app:rb_duration="3000"
+        app:rb_radius="64dp"
+        app:rb_rippleAmount="5"
+        app:rb_duration="2000"
         app:rb_scale="6">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="300dp"
+            android:layout_width="400dp"
             android:layout_centerInParent="true"
             android:layout_height="wrap_content"
             android:background="@color/white">
-            <com.github.florent37.materialtextfield.MaterialTextField
-                android:layout_width="300dp"
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                app:mtf_labelColor="@color/text_black">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/name"
-                    android:text="@{user.name}"
-                    android:inputType="none"
-                    android:textColor="@color/text_black"
-                    android:textSize="18sp" />
-            </com.github.florent37.materialtextfield.MaterialTextField>
-            <com.github.florent37.materialtextfield.MaterialTextField
-                android:layout_width="300dp"
+                android:text="@{@string/name+ user.name}"
+                android:inputType="none"
+                android:textColor="@color/text_black"
+                android:textSize="28sp" />
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                app:mtf_labelColor="@color/text_black">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/age"
-                    android:text="@{user.age}"
-                    android:inputType="none"
-                    android:textColor="@color/text_black"
-                    android:textSize="18sp" />
-            </com.github.florent37.materialtextfield.MaterialTextField>
-            <com.github.florent37.materialtextfield.MaterialTextField
-                android:layout_width="300dp"
+                android:text="@{@string/age+ user.age}"
+                android:inputType="none"
+                android:textColor="@color/text_black"
+                android:textSize="28sp" />
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                app:mtf_labelColor="@color/text_black">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/blood_group"
-                    android:text="@{user.bloodGroup}"
-                    android:inputType="none"
-                    android:textColor="@color/text_black"
-                    android:textSize="18sp" />
-            </com.github.florent37.materialtextfield.MaterialTextField>
-            <com.github.florent37.materialtextfield.MaterialTextField
-                android:layout_width="300dp"
+                android:text="@{@string/blood_group+ user.bloodGroup}"
+                android:inputType="none"
+                android:textColor="@color/text_black"
+                android:textSize="28sp" />
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                app:mtf_labelColor="@color/text_black">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/allergies"
-                    android:text="@{user.allergies}"
-                    android:inputType="none"
-                    android:textColor="@color/text_black"
-                    android:textSize="18sp" />
-            </com.github.florent37.materialtextfield.MaterialTextField>
-            <com.github.florent37.materialtextfield.MaterialTextField
-                android:layout_width="300dp"
+                android:text="@{@string/allergies+ user.allergies}"
+                android:inputType="none"
+                android:textColor="@color/text_black"
+                android:textSize="28sp" />
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                app:mtf_labelColor="@color/text_black">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/current_medications"
-                    android:text="@{user.medications}"
-                    android:inputType="none"
-                    android:textColor="@color/text_black"
-                    android:textSize="18sp" />
-            </com.github.florent37.materialtextfield.MaterialTextField>
+                android:text="@{@string/current_medications+ user.medications}"
+                android:inputType="none"
+                android:textColor="@color/text_black"
+                android:textSize="28sp" />
         </LinearLayout>
-        </RelativeLayout>
     </com.skyfishjy.library.RippleBackground>
+    </RelativeLayout>
 </layout>

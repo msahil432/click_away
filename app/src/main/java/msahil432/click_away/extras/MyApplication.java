@@ -13,7 +13,7 @@ import msahil432.click_away.connections.MyGPSLocService;
 
 public class MyApplication extends Application {
 
-    public static boolean DEBUG_ON = true;
+    public static boolean DEBUG_ON = false;
     public static void Report(String location, String description, Throwable... t){
         if(!DEBUG_ON)   return;
         Log.e("TAG", location+": "+description);

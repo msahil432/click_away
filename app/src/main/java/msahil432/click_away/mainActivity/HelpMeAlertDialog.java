@@ -5,14 +5,21 @@ import android.app.Dialog;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.KeyboardShortcutGroup;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
 
+import com.skyfishjy.library.RippleBackground;
+
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import msahil432.click_away.R;
 import msahil432.click_away.databinding.DialogHelpAlertBinding;
+
+import static msahil432.click_away.extras.MyApplication.Report;
 
 /**
  * Created by sahil on 11/2/17.
@@ -20,10 +27,12 @@ import msahil432.click_away.databinding.DialogHelpAlertBinding;
 
 public class HelpMeAlertDialog extends Dialog implements View.OnClickListener {
 
-    private Activity activity;
+    @BindView(R.id.background_ripple)
+    RippleBackground rippleBackground;
+    DialogHelpAlertBinding binding;
+
     HelpMeAlertDialog(Activity a){
         super(a);
-        this.activity = a;
     }
 
     @Override
@@ -32,17 +41,31 @@ public class HelpMeAlertDialog extends Dialog implements View.OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setCancelable(false);
         setCanceledOnTouchOutside(false);
-        DialogHelpAlertBinding binding = DataBindingUtil
-                .setContentView(activity, R.layout.dialog_help_alert);
+        binding = DataBindingUtil.inflate(
+                LayoutInflater.from(getContext()), R.layout.dialog_help_alert, null, false);
         binding.setUser(User.Builder(getContext()));
+        setContentView(binding.getRoot());
+        ButterKnife.bind(this, binding.getRoot());
     }
 
     @Override
     public void onProvideKeyboardShortcuts(List<KeyboardShortcutGroup> data,
-                                           Menu menu, int deviceId) {
+                                           Menu menu, int deviceId) { }
+
+    @Override
+    public void onClick(View v) { }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        rippleBackground.startRippleAnimation();
+        Report("Help dialog","Starting Bg Ripples");
     }
 
     @Override
-    public void onClick(View v) {
+    protected void onStop() {
+        rippleBackground.stopRippleAnimation();
+        binding.unbind();
+        super.onStop();
     }
 }

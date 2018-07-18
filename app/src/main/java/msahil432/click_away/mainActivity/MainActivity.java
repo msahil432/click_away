@@ -4,12 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Build;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.telephony.SmsManager;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
@@ -26,6 +31,8 @@ import msahil432.click_away.forceClose.MyExceptionHandler;
 import msahil432.click_away.list.BloodBankActivity;
 import msahil432.click_away.list.ChemistActivity;
 import msahil432.click_away.list.HospitalsActivity;
+
+import static msahil432.click_away.extras.MyApplication.Report;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -61,11 +68,6 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer mediaPlayer;
     @OnClick(R.id.main_help_btn)
     public void helpMeBtn(AppCompatButton button){
-        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        if (audioManager != null) {
-            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
-                    audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
-        }
         String temp = MyApplication.getContactPrefs(this).helpSound();
         int helpSound = R.raw.helpsound;
         if(temp ==null || temp.isEmpty()) {
@@ -89,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
         button.setClickable(false);
         HelpMeAlertDialog dialog = new HelpMeAlertDialog(this);
         dialog.show();
+        makeVolumeFull();
+        makeScreenBrightest();
     }
 
     @OnClick(R.id.main_sos_btn)
@@ -129,6 +133,20 @@ public class MainActivity extends AppCompatActivity {
         String googleMapsUrl = getString(R.string.g_maps_url);
         return googleMapsUrl+"@"+locationData.getLatitude()+
                 ","+locationData.getLongitude()+",15z";
+    }
+
+    private void makeVolumeFull(){
+        AudioManager audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        if (audioManager != null) {
+            audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
+                    audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC), 0);
+        }
+    }
+
+    private void makeScreenBrightest(){
+        WindowManager.LayoutParams layout = getWindow().getAttributes();
+        layout.screenBrightness = 1F;
+        getWindow().setAttributes(layout);
     }
 }
 

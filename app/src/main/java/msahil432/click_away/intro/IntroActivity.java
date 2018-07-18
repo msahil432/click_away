@@ -5,7 +5,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
@@ -72,6 +75,10 @@ public class IntroActivity extends AppIntro{
             if (resultCode != Activity.RESULT_OK) {
                 Toast.makeText(this, R.string.permissions_necessary, Toast.LENGTH_SHORT).show();
                 finish();
+            }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+                intent.setData(Uri.parse("package:" + getPackageName()));
+                startActivity(intent);
             }
         }
         super.onActivityResult(requestCode, resultCode, data);
