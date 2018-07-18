@@ -49,6 +49,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void initializeList(){
+        Report("BaseListAct", "Initializing List");
         adapter = new RecyclerAdapter();
         listView.setAdapter(adapter);
         listView.setHasFixedSize(true);
@@ -62,6 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         viewModel.getInstitutes().observe(this, new Observer<PagedList<Institute>>() {
             @Override
             public void onChanged(@Nullable PagedList<Institute> institutes) {
+                Report("BaseListAct", "New Data of institutes, Size:"+institutes.size());
                 adapter.submitList(institutes);
             }
         });
@@ -75,6 +77,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected BaseViewModel setViewModel(){
+        Report("BaseListAct", "getting ViewModel");
         return ViewModelProviders.of(this,
                 new MyViewModelFactory(MyDatabase.instance(this).getDao(), setType()))
                 .get(BaseViewModel.class);

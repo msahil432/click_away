@@ -6,9 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".list.BloodBankActivity">
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/local_list">
+    </android.support.v7.widget.RecyclerView>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -19,13 +25,10 @@
             <WebView
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
+                android:visibility="gone"
                 android:id="@+id/online_webview">
             </WebView>
-            <android.support.v7.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/local_list">
-            </android.support.v7.widget.RecyclerView>
+
         </LinearLayout>
         </LinearLayout>
     </ScrollView>

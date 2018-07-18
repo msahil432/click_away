@@ -89,19 +89,27 @@ public class MyGPSLocService extends Service {
     }
 
     private void sendLocation(Location location){
+        Report(TAG, "new location received");
         LocationData locData = new LocationData(
                 location.getLatitude(),
                 location.getLongitude(),
                 location.getAltitude());
         EventBus.getDefault().post(locData);
-        MyApplication.getLastLocation(getApplicationContext()).setLastLocation(locData);
+        MyApplication.LastLocation lastLocation =
+                MyApplication.getLastLocation(getApplicationContext());
+        if (lastLocation.getLastLocatino().equals(locData)) {
+            Report(TAG, "new location received, but it is same as last one");
+            return;
+        }
+        lastLocation.setLastLocation(locData);
         (new FetchAndSaveWorker(locData)).doWork(getApplicationContext());
     }
 
     @Override
     public void onDestroy() {
         Report(TAG, "onDestroy");
-        mFusedLocationClient.removeLocationUpdates(locationCallback);
+        if(mFusedLocationClient!=null)
+            mFusedLocationClient.removeLocationUpdates(locationCallback);
         super.onDestroy();
     }
 
@@ -133,6 +141,13 @@ public class MyGPSLocService extends Service {
 
         public double getAltitude() {
             return altitude;
+        }
+
+        public boolean equals(LocationData obj) {
+            if(this.longitude==obj.longitude)
+                if(this.latitude==obj.latitude)
+                    return this.altitude==obj.altitude;
+            return false;
         }
     }
 }
