@@ -3,6 +3,8 @@ package msahil432.click_away.list.base;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.arch.paging.PagedList;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,11 +42,27 @@ public abstract class BaseActivity extends AppCompatActivity {
         Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+        setColors();
         ButterKnife.bind(this);
         setTitle(setType().activityName);
         viewModel = setViewModel();
         initializeList();
         EventBus.getDefault().register(this);
+    }
+
+    protected void setColors(){
+        if(getSupportActionBar()!=null){
+            ColorDrawable color;
+            if(Build.VERSION.SDK_INT>Build.VERSION_CODES.M){
+                color = new ColorDrawable(getColor(getColorRes()));
+                getWindow().setStatusBarColor(getColor(getColorRes()));
+            }else{
+                color = new ColorDrawable(getResources().getColor(getColorRes()));
+            }
+            getSupportActionBar().setBackgroundDrawable(color);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            getSupportActionBar().setDisplayShowTitleEnabled(true);
+        }
     }
 
     protected void initializeList(){
@@ -76,6 +94,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract Types setType();
+
+    protected abstract int getColorRes();
 
     public enum Types{
         BloodBanks("Blood Banks", "b1", "bloodbanks"),

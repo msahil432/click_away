@@ -7,4 +7,6 @@
 .DS_Store
 /build
 /captures
+/app/release
+/app/src/main/java/msahil432.click_away/intro/AddDummyData.java
 .externalNativeBuild
