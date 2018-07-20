@@ -3,16 +3,16 @@ package msahil432.click_away.database;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = "institutes")
 public class Institute {
-    @PrimaryKey(autoGenerate = true)
-    private long uid;
-
+    @PrimaryKey @NonNull
+    private String uid;
     private String name, address, phone, organization;
     private double latitude, longitude;
 
-    public Institute(long uid, String name, String address, String phone, String organization,
+    public Institute(@NonNull String uid, String name, String address, String phone, String organization,
                      double latitude, double longitude) {
         this.uid = uid;
         this.name = name;
@@ -23,22 +23,11 @@ public class Institute {
         this.longitude = longitude;
     }
 
-    @Ignore
-    public Institute(String name, String address, String phone, String organization,
-                     double latitude, double longitude) {
-        this.name = name;
-        this.address = address;
-        this.phone = phone;
-        this.organization = organization;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-    public long getUid() {
+    public String getUid() {
         return uid;
     }
 
-    public void setUid(long uid) {
+    public void setUid(@NonNull String uid) {
         this.uid = uid;
     }
 
@@ -88,5 +77,9 @@ public class Institute {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public boolean equals(Institute obj) {
+        return (obj.uid.equals(this.uid));
     }
 }

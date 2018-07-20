@@ -20,6 +20,9 @@ import com.github.paolorotolo.appintro.AppIntro;
 
 import org.greenrobot.eventbus.EventBus;
 
+import java.util.concurrent.Executors;
+
+import msahil432.click_away.database.MyDatabase;
 import msahil432.click_away.mainActivity.MainActivity;
 import msahil432.click_away.R;
 import msahil432.click_away.extras.MyApplication;
@@ -47,6 +50,8 @@ public class IntroActivity extends AppIntro{
         fragment = new ContactInfoFragment();
         addSlide(fragment);
         showSkipButton(false);
+        Executors.newSingleThreadExecutor().execute(
+                new AddDummyData(MyDatabase.instance(getApplicationContext()).getDao()));
     }
 
     @Override

@@ -30,7 +30,6 @@ import static msahil432.click_away.extras.RetroFitService.baseUrl;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    @BindView(R.id.online_webview) protected WebView webView;
     @BindView(R.id.local_list) protected RecyclerView listView;
 
     protected BaseViewModel viewModel;
@@ -67,13 +66,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                 adapter.submitList(institutes);
             }
         });
-        WebSettings webSettings = webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        webView.setWebChromeClient(new WebChromeClient());
-        locationChanged(
-                MyApplication.getLastLocation(getApplicationContext())
-                        .getLastLocatino());
-        webView.canGoBackOrForward(0);
     }
 
     protected BaseViewModel setViewModel(){
@@ -84,16 +76,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected abstract Types setType();
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void locationChanged(MyGPSLocService.LocationData locationData){
-        String url = baseUrl+"/"+setType().urlPart+
-                "?long="+locationData.getLongitude()+
-                "&lat="+locationData.getLatitude();
-        Report("Base-Webview", "Loading new Location Data");
-        Report("Base-Webview", "Url :"+url);
-        webView.loadUrl(url);
-    }
 
     public enum Types{
         BloodBanks("Blood Banks", "b1", "bloodbanks"),

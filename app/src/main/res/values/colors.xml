@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
     <color name="white">#FFFFFF</color>
     <color name="red">#d50000</color>
-    <color name="text_color">#FFFF</color>
-    <color name="sos_color">#e040fb</color>
-    <color name="blood_bank_color">#7986cb</color>
-    <color name="drug_store">#00e676</color>
-    <color name="hospital_color">#c0ca33</color>
-    <color name="text_black">#484646</color>
+    <color name="text_color">#FFFFff</color>
+    <color name="sos_color">#7b1fa2</color>
+    <color name="blood_bank_color">#0336FF</color>
+    <color name="drug_store">#018786</color>
+    <color name="hospital_color">#FFDE03</color>
+    <color name="text_black">#000000</color>
+    <color name="clear">#00f2efef</color>
 </resources>

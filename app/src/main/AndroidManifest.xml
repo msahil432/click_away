@@ -31,13 +31,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".forceClose.ForceCloseActivity" />
-        <activity android:name=".list.ChemistActivity" />
-        <activity android:name=".list.HospitalsActivity" />
-        <activity android:name=".list.BloodBankActivity" />
+        <activity android:name=".forceClose.ForceCloseActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+        <activity android:name=".list.ChemistActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+        <activity android:name=".list.HospitalsActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
+        <activity android:name=".list.BloodBankActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"/>
         <activity android:name=".intro.IntroActivity" />
         <activity android:name=".mainActivity.MainActivity"/>
-
         <service android:name=".connections.MyGPSLocService"
             android:exported="true"
             android:process=".my_gps_loc_service" />

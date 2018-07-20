@@ -6,7 +6,7 @@ android {
         applicationId "msahil432.click_away"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 5
+        versionCode 10
         versionName "0.2.0"
     }
     buildTypes {

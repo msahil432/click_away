@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".mainActivity.MainActivity">
-
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/main_sos_btn"
         android:layout_width="0dp"
@@ -15,6 +14,7 @@
         android:background="@color/sos_color"
         android:text="@string/sos"
         android:textSize="40sp"
+        android:textColor="@color/white"
         android:gravity="top|center"
         android:paddingTop="32dp"
         app:layout_constraintBottom_toTopOf="@+id/main_blood_btn"
@@ -23,7 +23,6 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/main_drug_store_btn"
         android:layout_width="0dp"
@@ -31,8 +30,9 @@
         android:background="@color/drug_store"
         android:text="@string/drug_store"
         android:textSize="40sp"
+        android:textColor="@color/white"
         android:gravity="top|center"
-        android:paddingTop="16dp"
+        android:paddingTop="10dp"
         app:layout_constraintBottom_toTopOf="@+id/main_hospitals_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -46,8 +46,9 @@
         android:background="@color/blood_bank_color"
         android:text="@string/blood_bank"
         android:textSize="40sp"
+        android:textColor="@color/white"
         android:gravity="bottom|center"
-        android:paddingBottom="16dp"
+        android:paddingBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/main_hospitals_btn"
         app:layout_constraintHorizontal_bias="0.5"
@@ -62,14 +63,62 @@
         android:background="@color/hospital_color"
         android:text="@string/hospitals"
         android:textSize="40sp"
+        android:textColor="@color/white"
         android:gravity="bottom|center"
-        android:paddingBottom="16dp"
+        android:paddingBottom="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/main_blood_btn"
         app:layout_constraintTop_toBottomOf="@+id/main_drug_store_btn" />
-
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/hospital"
+        android:elevation="2dp"
+        android:layout_marginTop="16dp"
+        android:padding="30dp"
+        android:id="@+id/sos_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/main_drug_store_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/main_blood_btn" />
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/hospital"
+        android:elevation="2dp"
+        android:layout_marginTop="20dp"
+        android:padding="30dp"
+        android:id="@+id/drug_store_image"
+        app:layout_constraintStart_toStartOf="@id/main_drug_store_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/main_hospitals_btn"/>
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/hospital"
+        android:elevation="2dp"
+        android:layout_marginBottom="20dp"
+        android:padding="30dp"
+        android:id="@+id/blood_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/main_hospitals_btn"
+        app:layout_constraintTop_toBottomOf="@id/main_sos_btn"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <android.support.v7.widget.AppCompatImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/hospital"
+        android:elevation="2dp"
+        android:layout_marginBottom="12dp"
+        android:padding="24dp"
+        android:id="@+id/hospital_image"
+        app:layout_constraintTop_toBottomOf="@id/main_drug_store_btn"
+        app:layout_constraintStart_toEndOf="@id/main_blood_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/main_help_btn"
         android:layout_width="256dp"
@@ -79,8 +128,10 @@
         android:layout_marginEnd="136dp"
         android:layout_marginBottom="32dp"
         android:background="@drawable/roundedbutton"
+        android:elevation="8dp"
         android:backgroundTint="@color/red"
         android:text="@string/help"
+        android:textColor="@color/white"
         android:textSize="64sp"
         app:layout_constraintBottom_toTopOf="@+id/main_hospitals_btn"
         app:layout_constraintDimensionRatio="1:1"

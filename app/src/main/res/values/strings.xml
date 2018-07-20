@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Click-Away</string>
-    <string name="hospitals">Hospitals</string>
+    <string name="hospitals">Hospital</string>
     <string name="help">HELP!</string>
     <string name="drug_store">Drug Store</string>
     <string name="sos">SOS</string>
@@ -39,4 +39,7 @@
     <string name="permissions_necessary">These permissions are necessary for app to function!</string>
     <string name="cancel">Cancel</string>
     <string name="send_report">Send Report</string>
+    <string name="near_blood_banks">Blood Banks near Your Location:</string>
+    <string name="near_drug_stores">Drug Stores near Your Location:</string>
+    <string name="near_hospitals">Hospitals near Your Location:</string>
 </resources>

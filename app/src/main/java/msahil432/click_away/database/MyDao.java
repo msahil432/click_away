@@ -7,7 +7,7 @@ import android.arch.persistence.room.Query;
 
 import java.util.List;
 
-import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
+import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
 
 @Dao
 public interface MyDao {
@@ -18,6 +18,6 @@ public interface MyDao {
     @Query("SELECT * FROM institutes")
     public List<Institute> get();
 
-    @Insert(onConflict = REPLACE)
+    @Insert(onConflict = IGNORE)
     public void save(Institute... institutes);
 }

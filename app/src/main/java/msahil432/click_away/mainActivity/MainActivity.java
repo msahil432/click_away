@@ -116,15 +116,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @OnClick(R.id.main_drug_store_btn)
+    @OnClick({R.id.main_drug_store_btn, R.id.drug_store_image})
     public void chemistBtn(View v){
         startActivity(new Intent(this, ChemistActivity.class));
     }
-    @OnClick(R.id.main_hospitals_btn)
+    @OnClick({R.id.main_hospitals_btn, R.id.hospital_image})
     public void hospitalsBtn(View v){
         startActivity(new Intent(this, HospitalsActivity.class));
     }
-    @OnClick(R.id.main_blood_btn)
+    @OnClick({R.id.main_blood_btn, R.id.blood_image})
     public void bloodBtn(View v){
         startActivity(new Intent(this, BloodBankActivity.class));
     }

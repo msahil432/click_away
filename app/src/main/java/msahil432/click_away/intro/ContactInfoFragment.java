@@ -1,6 +1,7 @@
 package msahil432.click_away.intro;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -74,21 +75,16 @@ public class ContactInfoFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         //builder.setCancelable(false);
         AlertDialog dialog = builder.create();
-        dialog.setButton("Stop", new DialogInterface.OnClickListener() {
+        dialog.setButton(Dialog.BUTTON_NEGATIVE, "Stop", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                if(mediaPlayer!= null)
+                    mediaPlayer.stop();
                 dialog.dismiss();
             }
         });
         dialog.setMessage("Playing... \n");
         dialog.show();
-        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-                if(mediaPlayer!= null)
-                    mediaPlayer.stop();
-            }
-        });
     }
 
     MediaRecorder recorder;
@@ -118,21 +114,16 @@ public class ContactInfoFragment extends Fragment {
             }
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             AlertDialog dialog = builder.create();
-            dialog.setButton("Stop", new DialogInterface.OnClickListener() {
+            dialog.setButton(Dialog.BUTTON_NEGATIVE, "Stop", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    recorder.release();
+                    recorder = null;
                     dialog.dismiss();
                 }
             });
             dialog.setMessage("Press Stop when done \n");
             dialog.show();
-            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                @Override
-                public void onDismiss(DialogInterface dialog) {
-                    recorder.release();
-                    recorder = null;
-                }
-            });
         }catch (Exception e){
             Report("Recording Audio: ", "error", e);
             prefs.setHelpSound("");

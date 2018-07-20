@@ -2,9 +2,6 @@ package msahil432.click_away.connections;
 
 import android.content.Context;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.List;
 import java.util.concurrent.Executors;
 
@@ -38,7 +35,7 @@ public class FetchAndSaveWorker {
     }
 
     private Context context;
-    public void doWork(Context context){
+    void doWork(Context context){
         request.enqueue(callback);
         this.context = context;
     }
@@ -96,7 +93,7 @@ public class FetchAndSaveWorker {
             for(MyResponseBody.Bloodbank h : bloodBanks)
                 try {
                     dao.save(
-                            makeAnInstitute(Hospitals.dbField, h)
+                            makeAnInstitute(BloodBanks.dbField, h)
                     );
                 }catch (Exception e){
                     Report("Saving to DB", "Blood Bank Singular Errors", e);
@@ -106,48 +103,9 @@ public class FetchAndSaveWorker {
         }
     }
 
-    private void saveToDb(JSONObject res){
-        try {
-            Report("Fetch&Save Worker", "Saving res to db");
-            Report("Fetch&Save Worker", res.toString());
-            MyDao dao = MyDatabase.instance(context).getDao();
-            if (res.has(Hospitals.dbField)) {
-                JSONArray hospitals = res.getJSONArray(Hospitals.dbField);
-                Report("Fetch&Save Worker", "hospitals:"+hospitals.length());
-                for(int i=0; i<hospitals.length(); i++)
-                    try {
-                        dao.save(
-                                makeAnInstitute(Hospitals.dbField, hospitals.getJSONObject(i))
-                        );
-                    }catch (Exception e){ e.printStackTrace();}
-            }
-            if (res.has(Chemists.dbField)) {
-                JSONArray hospitals = res.getJSONArray(Chemists.dbField);
-                Report("Fetch&Save Worker", "chemists:"+hospitals.length());
-                for(int i=0; i<hospitals.length(); i++)
-                    try {
-                        dao.save(
-                                makeAnInstitute(Chemists.dbField, hospitals.getJSONObject(i))
-                        );
-                    }catch (Exception e){ e.printStackTrace();}
-            }
-            if (res.has(BloodBanks.dbField)) {
-                JSONArray hospitals = res.getJSONArray(BloodBanks.dbField);
-                Report("Fetch&Save Worker", "blood banks:"+hospitals.length());
-                for(int i=0; i<hospitals.length(); i++)
-                    try {
-                        dao.save(
-                                makeAnInstitute(BloodBanks.dbField, hospitals.getJSONObject(i))
-                        );
-                    }catch (Exception e){ e.printStackTrace();}
-            }
-        }catch (Exception e){
-            Report("Fetch&Save Worker", "saveToDb", e);
-        }
-    }
-
     private Institute makeAnInstitute(String type, MyResponseBody.Hospital h){
         return new Institute(
+                h.getId(),
                 h.getName(),
                 h.getAddress()+" "+h.getPincode(),
                 h.getContact()+"",
@@ -159,6 +117,7 @@ public class FetchAndSaveWorker {
 
     private Institute makeAnInstitute(String type, MyResponseBody.Chemist h){
         return new Institute(
+                h.getId(),
                 h.getName(),
                 h.getAddress()+" "+h.getPincode(),
                 h.getContact()+"",
@@ -170,6 +129,7 @@ public class FetchAndSaveWorker {
 
     private Institute makeAnInstitute(String type, MyResponseBody.Bloodbank h){
         return new Institute(
+                h.getId(),
                 h.getName(),
                 h.getAddress()+" "+h.getPincode(),
                 h.getContact()+"",
@@ -177,19 +137,6 @@ public class FetchAndSaveWorker {
                 h.getLoc().get(1),
                 h.getLoc().get(0)
         );
-    }
-
-    private Institute makeAnInstitute(String type, JSONObject obj) throws Exception{
-        JSONArray loc = obj.getJSONArray("loc");
-        Institute institute = new Institute(
-                obj.getString("name"),
-                obj.getString("address")+" "+obj.getString("pincode"),
-                obj.getString("contact"),
-                type,
-                loc.getDouble(1),
-                loc.getDouble(0)
-        );
-        return  institute;
     }
 
     @Override
