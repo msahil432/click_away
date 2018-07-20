@@ -7,10 +7,12 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.constraint.Group;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.telephony.SmsManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -22,6 +24,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.Set;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import msahil432.click_away.R;
@@ -36,6 +39,8 @@ import static msahil432.click_away.extras.MyApplication.Report;
 
 public class MainActivity extends AppCompatActivity {
 
+    @BindView(R.id.icons_group) Group iconsGroup;
+
     Set<String> address;
 
     @Override
@@ -47,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         startService(new Intent(this, MyGPSLocService.class));
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        if((int)(displayMetrics.density * 160f)<320){
+            iconsGroup.setVisibility(View.GONE);
+        }
     }
 
     @Override

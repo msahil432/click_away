@@ -125,6 +125,11 @@
         app:layout_constraintStart_toEndOf="@id/main_blood_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+    <android.support.constraint.Group
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/icons_group"
+        app:constraint_referenced_ids="sos_image,drug_store_image,blood_image,hospital_image"/>
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/main_help_btn"
         android:layout_width="256dp"
