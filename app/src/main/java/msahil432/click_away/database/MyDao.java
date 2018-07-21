@@ -12,8 +12,8 @@ import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
 @Dao
 public interface MyDao {
 
-    @Query("SELECT * FROM institutes")
-    public DataSource.Factory<Integer, Institute> getByType();
+    @Query("SELECT * FROM institutes where organization = :myType")
+    public DataSource.Factory<Integer, Institute> getByType(String myType);
 
     @Query("SELECT * FROM institutes")
     public List<Institute> get();

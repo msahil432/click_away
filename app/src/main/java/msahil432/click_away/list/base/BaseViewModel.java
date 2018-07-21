@@ -18,7 +18,7 @@ public class BaseViewModel extends ViewModel {
     private LiveData<PagedList<Institute>> institutes;
 
     public BaseViewModel(final MyDao dao, final BaseActivity.Types type) {
-        DataSource.Factory<Integer, Institute> factory = dao.getByType();
+        DataSource.Factory<Integer, Institute> factory = dao.getByType(type.dbField);
         institutes = new LivePagedListBuilder<>(factory,
                                                 new PagedList.Config.Builder()
                                                 .setPageSize(30)
