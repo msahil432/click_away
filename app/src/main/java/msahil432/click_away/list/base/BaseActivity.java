@@ -47,7 +47,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         setTitle(setType().activityName);
         viewModel = setViewModel();
         initializeList();
-        EventBus.getDefault().register(this);
     }
 
     protected void setColors(){
@@ -67,7 +66,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void initializeList(){
         Report("BaseListAct", "Initializing List");
-        adapter = new RecyclerAdapter();
+        adapter = new RecyclerAdapter(getColorRes());
         listView.setAdapter(adapter);
         listView.setHasFixedSize(true);
         listView.setLayoutManager(new LinearLayoutManager(this));

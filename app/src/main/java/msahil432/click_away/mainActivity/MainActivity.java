@@ -52,9 +52,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         startService(new Intent(this, MyGPSLocService.class));
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-        if((int)(displayMetrics.density * 160f)<320){
+        if(MyApplication.getScreenSize(this)<4){
             iconsGroup.setVisibility(View.GONE);
         }
     }

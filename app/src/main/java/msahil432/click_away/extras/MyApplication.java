@@ -1,12 +1,20 @@
 package msahil432.click_away.extras;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Point;
+import android.os.Build;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import msahil432.click_away.connections.MyGPSLocService;
@@ -126,5 +134,36 @@ public class MyApplication extends Application {
                     Double.valueOf(prefs.getString("altitude", "12000"))
             );
         }
+    }
+
+    public static double getScreenSize(Activity activity){
+        List<Integer> dimensions = getScreenDimensions(activity);
+        DisplayMetrics dm = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        double x = Math.pow(dimensions.get(0) / dm.xdpi, 2);
+        double y = Math.pow(dimensions.get(1) / dm.ydpi, 2);
+        return Math.sqrt(x + y);
+    }
+
+    public static List<Integer> getScreenDimensions(Activity activity){
+        WindowManager w = activity.getWindowManager();
+        Display d = w.getDefaultDisplay();
+        DisplayMetrics metrics = new DisplayMetrics();
+        d.getMetrics(metrics);
+        // since SDK_INT = 1;
+        int widthPixels = metrics.widthPixels;
+        int heightPixels = metrics.heightPixels;
+        // includes window decorations (status bar/menu bar)
+        if (Build.VERSION.SDK_INT >= 17)
+            try {
+                Point realSize = new Point();
+                Display.class.getMethod("getRealSize", Point.class).invoke(d, realSize);
+                widthPixels = realSize.x;
+                heightPixels = realSize.y;
+            } catch (Exception ignored) { }
+        List<Integer> dimensions = new ArrayList<>();
+        dimensions.add(widthPixels);
+        dimensions.add(heightPixels);
+        return dimensions;
     }
 }

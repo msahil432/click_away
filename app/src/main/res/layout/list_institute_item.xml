@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
-    <android.support.v7.widget.AppCompatImageView
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/list_thumbnail"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="12dp"
-        android:background="@drawable/clickaway"
+        android:src="@drawable/map"
+        android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,6 +25,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="8dp"
         android:text="Name of institution"
+        android:textColor="@color/sos_color"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="@+id/institute_call_btn"
         app:layout_constraintStart_toEndOf="@+id/list_thumbnail"
@@ -51,7 +53,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="0dp"
         android:backgroundTint="@color/white"
-        android:src="@android:drawable/sym_call_outgoing"
+        android:src="@drawable/call"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
