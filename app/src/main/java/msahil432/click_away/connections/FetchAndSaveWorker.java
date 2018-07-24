@@ -16,9 +16,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import static msahil432.click_away.extras.MyApplication.Report;
-import static msahil432.click_away.list.base.BaseActivity.Types.BloodBanks;
-import static msahil432.click_away.list.base.BaseActivity.Types.Chemists;
-import static msahil432.click_away.list.base.BaseActivity.Types.Hospitals;
+import static msahil432.click_away.listActivity.base.BaseActivity.Types.BloodBanks;
+import static msahil432.click_away.listActivity.base.BaseActivity.Types.Chemists;
+import static msahil432.click_away.listActivity.base.BaseActivity.Types.Hospitals;
 
 public class FetchAndSaveWorker {
 

@@ -1,4 +1,4 @@
-package msahil432.click_away.list.base;
+package msahil432.click_away.listActivity.base;
 
 import android.arch.paging.PagedListAdapter;
 import android.content.Intent;
@@ -86,8 +86,7 @@ public class RecyclerAdapter extends PagedListAdapter<Institute, RecyclerAdapter
             thumbnail.setColorFilter(
                     colorRes, PorterDuff.Mode.SRC_IN);
             callButton.setColorFilter(
-                    colorRes,
-                    PorterDuff.Mode.SRC_IN);
+                    colorRes, PorterDuff.Mode.SRC_IN);
         }
     }
 

@@ -1,4 +1,4 @@
-package msahil432.click_away.list.base;
+package msahil432.click_away.listActivity.base;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;

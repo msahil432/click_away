@@ -6,8 +6,9 @@ android {
         applicationId "msahil432.click_away"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 10
-        versionName "0.2.0"
+        versionCode 12
+        versionName "0.2.2"
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -15,8 +16,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding{
-        enabled=true
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -26,11 +27,13 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha03'
+    implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha04'
 
     implementation 'com.google.android.gms:play-services-location:15.0.1'
 
     implementation 'android.arch.persistence.room:runtime:1.1.1'
+    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'com.android.support:support-vector-drawable:27.1.1'
     annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
 
     implementation "android.arch.paging:runtime:1.0.1"
@@ -45,7 +48,7 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    implementation  'com.google.dagger:dagger:2.13'
+    implementation 'com.google.dagger:dagger:2.13'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
 
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
@@ -56,4 +59,6 @@ dependencies {
     implementation 'com.skyfishjy.ripplebackground:library:1.0.1'
 
     implementation 'com.github.florent37:materialtextfield:1.0.7'
+
+    implementation 'com.amulyakhare:com.amulyakhare.textdrawable:1.0.1'
 }

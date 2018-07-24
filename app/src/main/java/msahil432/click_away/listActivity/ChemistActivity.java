@@ -1,9 +1,9 @@
-package msahil432.click_away.list;
+package msahil432.click_away.listActivity;
 
 import android.os.Bundle;
 
 import msahil432.click_away.R;
-import msahil432.click_away.list.base.BaseActivity;
+import msahil432.click_away.listActivity.base.BaseActivity;
 
 public class ChemistActivity extends BaseActivity {
 

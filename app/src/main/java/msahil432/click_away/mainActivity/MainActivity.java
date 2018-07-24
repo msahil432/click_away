@@ -2,22 +2,21 @@ package msahil432.click_away.mainActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.net.Uri;
-import android.os.Build;
-import android.provider.Settings;
 import android.support.constraint.Group;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
 import android.telephony.SmsManager;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
+
+import com.amulyakhare.textdrawable.TextDrawable;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -31,15 +30,17 @@ import msahil432.click_away.R;
 import msahil432.click_away.connections.MyGPSLocService;
 import msahil432.click_away.extras.MyApplication;
 import msahil432.click_away.forceClose.MyExceptionHandler;
-import msahil432.click_away.list.BloodBankActivity;
-import msahil432.click_away.list.ChemistActivity;
-import msahil432.click_away.list.HospitalsActivity;
+import msahil432.click_away.listActivity.BloodBankActivity;
+import msahil432.click_away.listActivity.ChemistActivity;
+import msahil432.click_away.listActivity.HospitalsActivity;
+import msahil432.click_away.settingsActivity.SettingsActivity;
 
 import static msahil432.click_away.extras.MyApplication.Report;
 
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.icons_group) Group iconsGroup;
+    @BindView(R.id.main_help_btn) FloatingActionButton helpBtn;
 
     Set<String> address;
 
@@ -52,9 +53,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         startService(new Intent(this, MyGPSLocService.class));
-        if(MyApplication.getScreenSize(this)<4){
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        if(MyApplication.getScreenSize(this)<4.5
+                || (int)(metrics.density * 160f)<320){
             iconsGroup.setVisibility(View.GONE);
         }
+
+        TextDrawable text = TextDrawable.builder()
+                .beginConfig()
+                    .textColor(Color.WHITE)
+                    .fontSize(150)
+                    .bold()
+                    .toUpperCase()
+                .endConfig()
+                .buildRound(getString(R.string.help), Color.RED);
+        helpBtn.setImageDrawable(text);
     }
 
     @Override
@@ -75,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     MediaPlayer mediaPlayer;
     @OnClick(R.id.main_help_btn)
-    public void helpMeBtn(AppCompatButton button){
+    public void helpMeBtn(){
         String temp = MyApplication.getContactPrefs(this).helpSound();
         int helpSound = R.raw.helpsound;
         if(temp ==null || temp.isEmpty()) {
@@ -96,7 +109,6 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
         sosBtn();
-        button.setClickable(false);
         HelpMeAlertDialog dialog = new HelpMeAlertDialog(this);
         dialog.show();
         makeVolumeFull();
@@ -125,17 +137,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.main_drug_store_btn, R.id.drug_store_image})
-    public void chemistBtn(View v){
+    public void chemistBtn(){
         startActivity(new Intent(this, ChemistActivity.class));
     }
     @OnClick({R.id.main_hospitals_btn, R.id.hospital_image})
-    public void hospitalsBtn(View v){
+    public void hospitalsBtn(){
         startActivity(new Intent(this, HospitalsActivity.class));
     }
     @OnClick({R.id.main_blood_btn, R.id.blood_image})
-    public void bloodBtn(View v){
+    public void bloodBtn(){
         startActivity(new Intent(this, BloodBankActivity.class));
     }
+    @OnClick(R.id.main_settings_btn)
+    public void openSettings(){startActivity(new Intent(this, SettingsActivity.class));}
 
     private String makeMapUrl(){
         String googleMapsUrl = getString(R.string.g_maps_url);

@@ -1,16 +1,16 @@
-package msahil432.click_away.list;
+package msahil432.click_away.listActivity;
 
 import android.os.Bundle;
 
 import msahil432.click_away.R;
-import msahil432.click_away.list.base.BaseActivity;
+import msahil432.click_away.listActivity.base.BaseActivity;
 
-public class HospitalsActivity extends BaseActivity {
+public class BloodBankActivity extends BaseActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(R.string.near_hospitals);
+        setTitle(R.string.near_blood_banks);
     }
 
     @Override
@@ -20,6 +20,6 @@ public class HospitalsActivity extends BaseActivity {
 
     @Override
     protected int getColorRes() {
-        return R.color.hospital_color;
+        return R.color.blood_bank_color;
     }
 }

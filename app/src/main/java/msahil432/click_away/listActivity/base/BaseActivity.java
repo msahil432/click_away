@@ -1,4 +1,4 @@
-package msahil432.click_away.list.base;
+package msahil432.click_away.listActivity.base;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -10,25 +10,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import msahil432.click_away.R;
-import msahil432.click_away.connections.MyGPSLocService;
 import msahil432.click_away.database.Institute;
 import msahil432.click_away.database.MyDatabase;
-import msahil432.click_away.extras.MyApplication;
 import msahil432.click_away.forceClose.MyExceptionHandler;
 
 import static msahil432.click_away.extras.MyApplication.Report;
-import static msahil432.click_away.extras.RetroFitService.baseUrl;
 
 public abstract class BaseActivity extends AppCompatActivity {
 

@@ -130,23 +130,29 @@
         android:layout_height="wrap_content"
         android:id="@+id/icons_group"
         app:constraint_referenced_ids="sos_image,drug_store_image,blood_image,hospital_image"/>
-    <android.support.v7.widget.AppCompatButton
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/main_help_btn"
-        android:layout_width="256dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="136dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/roundedbutton"
-        android:elevation="8dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:padding="24dp"
+        android:src="@drawable/sos"
+        android:background="@color/red"
         android:backgroundTint="@color/red"
-        android:text="@string/help"
-        android:textColor="@color/white"
-        android:textSize="64sp"
-        app:layout_constraintBottom_toTopOf="@+id/main_hospitals_btn"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_sos_btn" />
+        app:layout_constraintTop_toBottomOf="parent" />
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/main_settings_btn"
+        android:src="@drawable/settings"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="@id/main_drug_store_btn"
+        app:layout_constraintEnd_toStartOf="@id/main_drug_store_btn"/>
+
 </android.support.constraint.ConstraintLayout>

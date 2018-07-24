@@ -15,6 +15,9 @@ allprojects {
         jcenter()
         google()
         maven { url 'https://dl.google.com/dl/android/maven2/' }
+        maven {
+            url 'http://dl.bintray.com/amulyakhare/maven'
+        }
     }
 }
 
