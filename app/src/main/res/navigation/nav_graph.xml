@@ -22,7 +22,7 @@
         android:label="IntroActivity" />
     <fragment
         android:id="@+id/introductionFragment"
-        android:name="msahil432.click_away.intro.WelcomeAndTcFragment"
+        android:name="msahil432.click_away.intro.fragments.WelcomeAndTcFragment"
         android:label="fragment_introduction"
         tools:layout="@layout/fragment_welcome_tc" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/personalDetailsFragment"
-        android:name="msahil432.click_away.intro.AddPersonalDetailsFragment"
+        android:name="msahil432.click_away.intro.fragments.AddPersonalDetailsFragment"
         android:label="intro_fragment_personal_details"
         tools:layout="@layout/fragment_personal_details" >
         <action
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/introFragmentDetails"
-        android:name="msahil432.click_away.intro.ContactInfoFragment"
+        android:name="msahil432.click_away.intro.fragments.ContactInfoFragment"
         android:label="intro_fragment_details"
         tools:layout="@layout/fragment_contact_details" />
 </navigation>

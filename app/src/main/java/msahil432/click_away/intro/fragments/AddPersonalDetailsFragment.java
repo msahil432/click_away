@@ -1,4 +1,4 @@
-package msahil432.click_away.intro;
+package msahil432.click_away.intro.fragments;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.Observable;

@@ -19,6 +19,10 @@ This project was generated with [Android Studio](https://developer.android.com/s
 
 To get more help on the Android, go check out the [Android Developers](https://d.android.com/).
 
+## Backend Information
+Source code of backend server is available @ https://github.com/kushagrachadha/ClickAwayServer
+Developer : Kushagra Chadha (https://www.linkedin.com/in/kushagra-chadha-025bb7153/)
+
 ## Useful Links
 
 More Apps: <http://msahil432.com/apps/>

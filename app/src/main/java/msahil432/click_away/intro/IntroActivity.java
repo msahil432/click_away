@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +24,9 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.concurrent.Executors;
 
 import msahil432.click_away.database.MyDatabase;
+import msahil432.click_away.intro.fragments.AddPersonalDetailsFragment;
+import msahil432.click_away.intro.fragments.ContactInfoFragment;
+import msahil432.click_away.intro.fragments.WelcomeAndTcFragment;
 import msahil432.click_away.mainActivity.MainActivity;
 import msahil432.click_away.R;
 import msahil432.click_away.extras.MyApplication;
@@ -43,13 +47,17 @@ public class IntroActivity extends AppIntro{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
+
+        setBarColor(Color.parseColor("#3F51B5"));
+        setSeparatorColor(Color.parseColor("#2196F3"));
+        showSkipButton(false);
+
         fragment3 = new WelcomeAndTcFragment();
         addSlide(fragment3);
         fragment2 = new AddPersonalDetailsFragment();
         addSlide(fragment2);
         fragment = new ContactInfoFragment();
         addSlide(fragment);
-        showSkipButton(false);
         Executors.newSingleThreadExecutor().execute(
                 new AddDummyData(MyDatabase.instance(getApplicationContext()).getDao()));
     }
