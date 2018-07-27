@@ -63,7 +63,6 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_sos_btn" />
-
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/main_hospitals_btn"
         android:layout_width="0dp"

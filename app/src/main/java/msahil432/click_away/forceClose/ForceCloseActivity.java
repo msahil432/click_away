@@ -14,11 +14,16 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import msahil432.click_away.R;
 import msahil432.click_away.SplashActivity;
+import msahil432.click_away.extras.RetroFitService;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static msahil432.click_away.extras.MyApplication.DEBUG_ON;
 import static msahil432.click_away.extras.MyApplication.Report;
@@ -115,7 +120,7 @@ public class ForceCloseActivity extends AppCompatActivity {
     @OnClick(R.id.send_btn)
     public void send(){
         Context context = getApplicationContext();
-        Toast.makeText(context, "We will be looking into this matter.", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, R.string.report_thanks, Toast.LENGTH_LONG).show();
         try {
             obj.accumulate("Activity", ACT);
             obj.accumulate("TIME", TIME);
@@ -129,13 +134,31 @@ public class ForceCloseActivity extends AppCompatActivity {
             obj.accumulate("SDK_RELEASE",SR);
             obj.accumulate("SDK_INCREMENTAL",SI);
             obj.accumulate("APP_INFO", AI);
-        }catch (Exception error){
-            Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+
+            JSONObject object = new JSONObject();
+            object.put("app", "Click-Away");
+            object.put("log", obj);
+
+            RetroFitService service = new Retrofit.Builder()
+                    .baseUrl(RetroFitService.baseUrl)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                    .create(RetroFitService.class);
+
+            service.reportError(object).execute();
+
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    cancelBtn();
+                }
+            }, 5000);
+        }catch (Exception error){ }
     }
 
     @OnClick(R.id.cancel_btn)
     public void cancelBtn(){
+        Toast.makeText(this, R.string.future_error_prevention, Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, SplashActivity.class));
         finish();
     }

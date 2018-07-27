@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="4dp">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/list_thumbnail"
@@ -55,12 +55,13 @@
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/institute_address"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="J -3 ' A Krishan Vihar, delhi 110086, Near "
-        android:lines="3"
+        android:maxLines="3"
+        app:autoSizeTextType="uniform"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/institute_call_btn"
         app:layout_constraintHorizontal_bias="0.0"
@@ -72,8 +73,8 @@
         android:id="@+id/institute_call_btn"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="0dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/white"
         android:src="@drawable/call"
         app:layout_constraintEnd_toEndOf="parent"

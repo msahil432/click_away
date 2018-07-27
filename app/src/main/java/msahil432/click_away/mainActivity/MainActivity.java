@@ -5,13 +5,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.support.constraint.Group;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.SmsManager;
-import android.util.DisplayMetrics;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
@@ -35,8 +34,6 @@ import msahil432.click_away.listActivity.ChemistActivity;
 import msahil432.click_away.listActivity.HospitalsActivity;
 import msahil432.click_away.settingsActivity.SettingsActivity;
 
-import static msahil432.click_away.extras.MyApplication.Report;
-
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.icons_group) Group iconsGroup;
@@ -52,22 +49,23 @@ public class MainActivity extends AppCompatActivity {
         EventBus.getDefault().register(this);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        startService(new Intent(this, MyGPSLocService.class));
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
-        if(MyApplication.getScreenSize(this)<4.5
-                || (int)(metrics.density * 160f)<320){
-            iconsGroup.setVisibility(View.GONE);
-        }
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
         TextDrawable text = TextDrawable.builder()
                 .beginConfig()
                     .textColor(Color.WHITE)
                     .fontSize(150)
                     .bold()
                     .toUpperCase()
-                .endConfig()
+                    .endConfig()
                 .buildRound(getString(R.string.help), Color.RED);
         helpBtn.setImageDrawable(text);
+
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1)
+            getWindow().setNavigationBarColor(getColor(R.color.colorPrimary));
     }
 
     @Override

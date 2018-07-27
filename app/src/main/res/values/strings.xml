@@ -47,4 +47,6 @@
     <string name="change_recorded_voice_and_emergency_contacts">Change recorded voice and Emergency Contacts</string>
     <string name="reset_app_preferences">Reset App Preferences</string>
     <string name="clear_all_settings">Clear all settings</string>
+    <string name="future_error_prevention">Reporting would have prevented future issues(whenever possible).</string>
+    <string name="report_thanks">Thanks, I will be looking into this matter.</string>
 </resources>

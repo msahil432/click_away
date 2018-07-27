@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -45,6 +47,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         viewModel = setViewModel();
         initializeList();
         EventBus.getDefault().register(this);
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1)
+            getWindow().setNavigationBarColor(getColor(R.color.colorPrimary));
     }
 
     protected void setColors(){
@@ -59,6 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             getSupportActionBar().setBackgroundDrawable(color);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayShowTitleEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
@@ -82,6 +87,15 @@ public abstract class BaseActivity extends AppCompatActivity {
                 adapter.submitList(institutes);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     protected BaseViewModel setViewModel(){
