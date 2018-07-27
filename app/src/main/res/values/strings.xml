@@ -43,4 +43,10 @@
     <string name="near_drug_stores">Drug Stores near Your Location:</string>
     <string name="near_hospitals">Hospitals near Your Location:</string>
     <string name="title_activity_settings">Settings</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="change_details_about_yourself">Change details about yourself</string>
+    <string name="emergency_settings">Emergency Settings</string>
+    <string name="change_recorded_voice_and_emergency_contacts">Change recorded voice and Emergency Contacts</string>
+    <string name="reset_app_preferences">Reset App Preferences</string>
+    <string name="clear_all_settings">Clear all settings</string>
 </resources>

@@ -15,7 +15,7 @@ public class ChemistActivity extends BaseActivity {
 
     @Override
     protected Types setType() {
-        return Types.BloodBanks;
+        return Types.Chemists;
     }
 
     @Override

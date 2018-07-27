@@ -16,9 +16,11 @@ import butterknife.ButterKnife;
 import msahil432.click_away.R;
 import msahil432.click_away.database.Institute;
 import msahil432.click_away.database.MyDatabase;
+import msahil432.click_away.extras.MyApplication;
 import msahil432.click_away.forceClose.MyExceptionHandler;
 
 import static msahil432.click_away.extras.MyApplication.Report;
+import static msahil432.click_away.extras.MyApplication.getLastLocation;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
@@ -56,7 +58,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected void initializeList(){
         Report("BaseListAct", "Initializing List");
-        adapter = new RecyclerAdapter(getColorRes());
+        adapter = new RecyclerAdapter(getColorRes(),
+                getLastLocation(this).getLastLocatino());
         listView.setAdapter(adapter);
         listView.setHasFixedSize(true);
         listView.setLayoutManager(new LinearLayoutManager(this));
@@ -78,8 +81,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected BaseViewModel setViewModel(){
         Report("BaseListAct", "getting ViewModel");
         return ViewModelProviders.of(this,
-                new MyViewModelFactory(MyDatabase.instance(this).getDao(), setType()))
-                .get(BaseViewModel.class);
+                new MyViewModelFactory(
+                        MyDatabase.instance(this).getDao(),
+                        setType(),
+                        MyApplication.getLastLocation(this).getLastLocatino()
+                )).get(BaseViewModel.class);
     }
 
     protected abstract Types setType();

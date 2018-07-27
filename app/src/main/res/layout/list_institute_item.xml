@@ -10,12 +10,25 @@
         android:id="@+id/list_thumbnail"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/map"
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/institute_distance"
+        app:autoSizeTextType="uniform"
+        android:text="4 KM"
+        android:textColor="@color/red"
+        android:padding="2dp"
+        android:maxLines="2"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/list_thumbnail"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/list_thumbnail"/>
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/institute_name"
@@ -25,11 +38,19 @@
         android:layout_marginTop="0dp"
         android:layout_marginEnd="8dp"
         android:text="Name of institution"
+        android:scrollHorizontally="true"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:freezesText="true"
         android:textColor="@color/sos_color"
-        android:textSize="24sp"
+        android:textSize="25sp"
         app:layout_constraintEnd_toStartOf="@+id/institute_call_btn"
         app:layout_constraintStart_toEndOf="@+id/list_thumbnail"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/institute_address"/>
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/institute_address"
@@ -44,7 +65,8 @@
         app:layout_constraintEnd_toStartOf="@+id/institute_call_btn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/list_thumbnail"
-        app:layout_constraintTop_toBottomOf="@+id/institute_name" />
+        app:layout_constraintTop_toBottomOf="@+id/institute_name"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/institute_call_btn"

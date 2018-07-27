@@ -39,8 +39,9 @@ public class AddDummyData implements Runnable {
                 "Opp HP Petrol Pump, Sector 15A, Rohini, New Delhi, Delhi- 110085",
                 "911127861033",
                 Hospitals.dbField,
-                77.1235585,
-                28.714607
+                28.714607,
+                77.1235585
+
         );
         dao.save(i);
         i= new Institute(
