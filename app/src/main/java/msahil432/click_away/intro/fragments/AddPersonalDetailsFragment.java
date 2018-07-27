@@ -38,14 +38,24 @@ public class AddPersonalDetailsFragment extends Fragment {
     @Subscribe
     public void fragmentSwipe(Double d){
         if(d.equals(Double.valueOf("1504.2014"))){
-            User user = binding.getUser();
-            if(user!=null && !user.isEmpty()){
-                user.saveUser(getContext());
-                Report("PersonalDetailsFrag", user.toString());
-                return;
-            }
-            Report("PersonalDetailsFrag", "Null or Empty User!");
+            saveUser();
         }
+    }
+
+    private void saveUser(){
+        User user = binding.getUser();
+        if(user!=null && !user.isEmpty()){
+            user.saveUser(getContext());
+            Report("PersonalDetailsFrag", user.toString());
+            return;
+        }
+        Report("PersonalDetailsFrag", "Null or Empty User!");
+    }
+
+    @Override
+    public void onDetach() {
+        saveUser();
+        super.onDetach();
     }
 
     @Override

@@ -20,6 +20,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.util.Set;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import msahil432.click_away.R;
@@ -34,6 +37,11 @@ public class ContactInfoFragment extends Fragment {
 
     MyApplication.ContactPrefs prefs;
 
+    @BindView(R.id.contact1) AppCompatButton contact1;
+    @BindView(R.id.contact2) AppCompatButton contact2;
+    @BindView(R.id.contact3) AppCompatButton contact3;
+    @BindView(R.id.contact4) AppCompatButton contact4;
+
     public ContactInfoFragment() {    }
 
     @Override
@@ -41,8 +49,30 @@ public class ContactInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_contact_details, container, false);
         ButterKnife.bind(this, v);
-        prefs = MyApplication.getContactPrefs(getContext());
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        prefs = MyApplication.getContactPrefs(getContext());
+        Set<String> contacts = prefs.contacts();
+        if(contacts!=null){
+            String arr[] = (String[]) contacts.toArray();
+            Context context = getContext();
+            String t = getName(context, arr[0]);
+            if(t!=null && !t.isEmpty())
+                contact1.setText(t);
+            t = getName(context, arr[1]);
+            if(t!=null && !t.isEmpty())
+                contact2.setText(t);
+            t = getName(context, arr[2]);
+            if(t!=null && !t.isEmpty())
+                contact3.setText(t);
+            t = getName(context, arr[3]);
+            if(t!=null && !t.isEmpty())
+                contact4.setText(t);
+        }
     }
 
     MediaPlayer mediaPlayer;
@@ -146,9 +176,10 @@ public class ContactInfoFragment extends Fragment {
             Cursor cursor = context.getContentResolver().query(uri,
                     null, null, null, null);
             if(cursor==null || !cursor.moveToFirst()) return;
-            String phoneNo = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-            prefs.addContact(phoneNo);
-            currentBtn.setText(getName(context, phoneNo));
+            String phoneNo = cursor.getString(cursor.getColumnIndex(
+                    ContactsContract.CommonDataKinds.Phone.NUMBER));
+            if(prefs.addContact(phoneNo))
+                currentBtn.setText(getName(context, phoneNo));
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

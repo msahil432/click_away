@@ -1,7 +1,5 @@
 package msahil432.click_away.settingsActivity;
 
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
@@ -12,6 +10,7 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import msahil432.click_away.R;
+import msahil432.click_away.extras.MyApplication;
 import msahil432.click_away.intro.fragments.AddPersonalDetailsFragment;
 import msahil432.click_away.intro.fragments.ContactInfoFragment;
 
@@ -67,6 +66,8 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void resetAll(){
+        MyApplication.getAppPrefs(this).setSetupDone(false);
+        MyApplication.getContactPrefs(this).clear();
         finish();
     }
 }

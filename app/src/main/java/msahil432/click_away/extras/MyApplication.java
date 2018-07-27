@@ -104,8 +104,16 @@ public class MyApplication extends Application {
             for(String t : contacts)
                 if(t.equals(phone))
                     return false;
+            if(contacts.size()>=4){
+                return false;
+            }
             contacts.add(phone);
+            prefs.edit().putStringSet("contacts", contacts).apply();
             return true;
+        }
+
+        public void clear(){
+            prefs.edit().clear().apply();
         }
     }
 
