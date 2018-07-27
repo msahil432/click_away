@@ -17,9 +17,7 @@
         <b> 4. Phone :      </b>To access Mobile Network and WiFi based location, this helps in getting GPS results faster.\n
         <b> 5. Audio :      </b>To enable you to record your own Emergency Message.\n
         <b> 6. Storage :    </b>To store your recorded message on the device.\n
-        <b> 7. Write System Settings :</b>To control brightness while showing Help Dialog.\n
     </string>
-    <string name="privacy_policy">https://docs.google.com/document/d/1etloEvZLytV1Xkjugk_4njgn7s8e_aXlXTF32HWn1Wo/</string>
     <string name="name">Name:</string>
     <string name="age">Age:</string>
     <string name="allergies">Allergies:</string>

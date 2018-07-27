@@ -6,8 +6,8 @@ android {
         applicationId "msahil432.click_away"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 12
-        versionName "0.2.2"
+        versionCode 20
+        versionName "0.3.0"
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {

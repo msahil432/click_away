@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Thread.currentThread().setUncaughtExceptionHandler(new MyExceptionHandler(this));
         super.onCreate(savedInstanceState);
-        Thread.setDefaultUncaughtExceptionHandler(new MyExceptionHandler(this));
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         EventBus.getDefault().register(this);
         setContentView(R.layout.activity_main);

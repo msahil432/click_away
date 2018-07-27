@@ -27,7 +27,7 @@ public class WelcomeAndTcFragment extends Fragment {
 
     @OnClick(R.id.privacy_policy_btn)
     public void showPrivacyPolicy(){
-        Uri uri = Uri.parse(getString(R.string.privacy_policy));
+        Uri uri = Uri.parse("https://api.msahil432.com/privacy-policy/clickaway");
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(uri);
         startActivity(intent);

@@ -11,9 +11,14 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import msahil432.click_away.R;
+import msahil432.click_away.connections.MyGPSLocService;
 import msahil432.click_away.database.Institute;
 import msahil432.click_away.database.MyDatabase;
 import msahil432.click_away.extras.MyApplication;
@@ -39,6 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         setTitle(setType().activityName);
         viewModel = setViewModel();
         initializeList();
+        EventBus.getDefault().register(this);
     }
 
     protected void setColors(){
@@ -86,6 +92,19 @@ public abstract class BaseActivity extends AppCompatActivity {
                         setType(),
                         MyApplication.getLastLocation(this).getLastLocatino()
                 )).get(BaseViewModel.class);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void getLocationUpdates(MyGPSLocService.LocationData locationData){
+        viewModel.setLocation(locationData);
+        adapter = new RecyclerAdapter(getColorRes(), locationData);
+        viewModel.getInstitutes().observe(this, new Observer<PagedList<Institute>>() {
+            @Override
+            public void onChanged(@Nullable PagedList<Institute> institutes) {
+                adapter.submitList(institutes);
+            }
+        });
+        listView.setAdapter(adapter);
     }
 
     protected abstract Types setType();

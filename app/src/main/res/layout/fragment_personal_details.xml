@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
+            app:mtf_backgroundColor="@color/colorAccent"
             app:mtf_labelColor="@color/text_black">
             <android.support.v7.widget.AppCompatEditText
                 android:autofillHints="@string/name"
@@ -43,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
+            app:mtf_backgroundColor="@color/colorAccent"
             app:mtf_labelColor="@color/text_black">
             <android.support.v7.widget.AppCompatEditText
                 android:autofillHints="@string/age"
@@ -58,6 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
+            app:mtf_backgroundColor="@color/colorAccent"
             app:mtf_labelColor="@color/text_black">
             <android.support.v7.widget.AppCompatEditText
                 android:autofillHints="@string/blood_group"
@@ -73,6 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
+            app:mtf_backgroundColor="@color/colorAccent"
             app:mtf_labelColor="@color/text_black">
             <android.support.v7.widget.AppCompatEditText
                 android:autofillHints="@string/allergies"
@@ -88,6 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
+            app:mtf_backgroundColor="@color/colorAccent"
             app:mtf_labelColor="@color/text_black">
             <android.support.v7.widget.AppCompatEditText
                 android:autofillHints="@string/current_medications"

@@ -1,15 +1,11 @@
-<RelativeLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:background="@color/colorPrimary">
-<android.support.constraint.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_centerInParent="true"
-    android:padding="8dp"
-    android:background="@color/white">
+    android:layout_gravity="center"
+    android:background="@color/white"
+    android:padding="8dp">
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/helpsoundtext"
         android:layout_width="wrap_content"
@@ -18,6 +14,7 @@
         android:gravity="center"
         android:text="@string/your_emergency_voice_message"
         android:textSize="32sp"
+        android:textColor="@color/text_black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +27,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_margin="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/drug_store"
         android:text="@string/play"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -47,7 +44,7 @@
         android:layout_margin="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/red"
         android:text="@string/record_new"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -62,6 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:gravity="center"
+        android:textColor="@color/text_black"
         android:text="@string/emergency_contacts"
         android:textSize="32sp"
         android:textStyle="bold"
@@ -76,7 +74,7 @@
         android:layout_margin="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/sos_color"
         android:text="@string/first"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -93,7 +91,7 @@
         android:layout_margin="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/drug_store"
         android:text="@string/second"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -108,7 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/blood_bank_color"
         android:text="@string/third"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -125,9 +123,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/hospital_color"
         android:text="@string/fourth"
-        android:textColor="@color/white"
+        android:textColor="@color/text_black"
         android:layout_margin="8dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,4 +133,3 @@
         app:layout_constraintStart_toEndOf="@+id/contact3"
         app:layout_constraintTop_toBottomOf="@+id/contact2" />
 </android.support.constraint.ConstraintLayout>
-</RelativeLayout>

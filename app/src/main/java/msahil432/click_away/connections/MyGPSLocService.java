@@ -89,18 +89,18 @@ public class MyGPSLocService extends Service {
     }
 
     private void sendLocation(Location location){
-        Report(TAG, "new location received");
         LocationData locData = new LocationData(
                 location.getLatitude(),
                 location.getLongitude(),
                 location.getAltitude());
-        EventBus.getDefault().post(locData);
         MyApplication.LastLocation lastLocation =
                 MyApplication.getLastLocation(getApplicationContext());
         if (lastLocation.getLastLocatino().equals(locData)) {
-            Report(TAG, "new location received, but it is same as last one");
+            Report(TAG, "a location update received, but it is same as last one");
             return;
         }
+        Report(TAG, "new location received");
+        EventBus.getDefault().post(locData);
         lastLocation.setLastLocation(locData);
         (new FetchAndSaveWorker(locData)).doWork(getApplicationContext());
     }
