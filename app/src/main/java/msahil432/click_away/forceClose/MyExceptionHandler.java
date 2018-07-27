@@ -21,7 +21,7 @@ public class MyExceptionHandler implements java.lang.Thread.UncaughtExceptionHan
         exception.printStackTrace(new PrintWriter(stackTrace));
 
         Bundle b = new Bundle();
-        b.putString("CAUSE_OF_ERROR", exception.getMessage()+stackTrace.toString());
+        b.putString("CAUSE_OF_ERROR", exception.getMessage()+":\n "+stackTrace.toString());
         b.putString("Activity", activity.getClass().getSimpleName());
         b.putSerializable("ex", exception);
         Intent intent = new Intent(activity, ForceCloseActivity.class);

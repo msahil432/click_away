@@ -20,6 +20,7 @@ import butterknife.OnClick;
 import msahil432.click_away.R;
 import msahil432.click_away.SplashActivity;
 
+import static msahil432.click_away.extras.MyApplication.DEBUG_ON;
 import static msahil432.click_away.extras.MyApplication.Report;
 
 public class ForceCloseActivity extends AppCompatActivity {
@@ -82,36 +83,31 @@ public class ForceCloseActivity extends AppCompatActivity {
     private void showData(){
         String LINE_SEPARATOR = "\n";
 
-        String errorReport2 = "************ CAUSE OF ERROR ************\n\n" +
-                COE +
-                "\n************ DEVICE INFORMATION ***********\n" +
-                "Brand: " +
-                DB +
+        String errorReport2 ="";
+        if(DEBUG_ON){
+            errorReport2 = "- CAUSE OF ERROR ************\n\n" + COE ;
+        }
+
+        errorReport2+="\n-DEVICE INFORMATION ***********\n" +
+                "Brand: " + DB +
                 LINE_SEPARATOR +
-                "Device: " +
-                DB +
+                "Device: " + DB +
                 LINE_SEPARATOR +
-                "Model: " +
-                DM +
+                "Model: " + DM +
                 LINE_SEPARATOR +
-                "Id: " +
-                DI +
+                "Id: " + DI +
                 LINE_SEPARATOR +
-                "Product: " +
-                P +
+                "Product: " + P +
                 LINE_SEPARATOR +
-                "\n************ FIRMWARE ************\n" +
+                "\n- FIRMWARE ************\n" +
                 "APP: " +
                 ACT + " " + AI +
                 LINE_SEPARATOR +
-                "SDK: " +
-                S +
+                "SDK: " + S +
                 LINE_SEPARATOR +
-                "Release: " +
-                SR +
+                "Release: " + SR +
                 LINE_SEPARATOR +
-                "Incremental: " +
-                SI +
+                "Incremental: " + SI +
                 LINE_SEPARATOR;
         ((TextView)findViewById(R.id.fc_ai)).setText(errorReport2);
     }
