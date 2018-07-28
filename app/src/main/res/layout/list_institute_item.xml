@@ -10,14 +10,14 @@
         android:id="@+id/list_thumbnail"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="2dp"
         android:src="@drawable/map"
         android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <android.support.v7.widget.AppCompatTextView
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="24dp"
         android:id="@+id/institute_distance"
         app:autoSizeTextType="uniform"
         android:text="4 KM"
