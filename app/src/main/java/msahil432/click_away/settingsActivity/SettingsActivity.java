@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
@@ -29,12 +30,25 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         EventBus.getDefault().register(this);
+        if(getSupportActionBar()!=null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            setTitle(R.string.settings);
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         addListFragment();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()==android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

@@ -49,4 +49,5 @@
     <string name="clear_all_settings">Clear all settings</string>
     <string name="future_error_prevention">Reporting would have prevented future issues(whenever possible).</string>
     <string name="report_thanks">Thanks, I will be looking into this matter.</string>
+    <string name="settings">Settings</string>
 </resources>
