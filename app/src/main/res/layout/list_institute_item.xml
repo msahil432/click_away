@@ -20,15 +20,15 @@
         android:layout_height="24dp"
         android:id="@+id/institute_distance"
         app:autoSizeTextType="uniform"
-        android:text="4 KM"
+        android:text="40000.87 KM"
         android:textColor="@color/red"
-        android:padding="2dp"
-        android:maxLines="2"
+        android:padding="1dp"
+        android:maxLines="1"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/list_thumbnail"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/list_thumbnail"/>
+        app:layout_constraintEnd_toStartOf="@id/institute_address"/>
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/institute_name"
